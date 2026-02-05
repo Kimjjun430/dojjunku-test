@@ -20,6 +20,9 @@ const resultTitle = document.getElementById('result-title');
 const resultImage = document.getElementById('result-image');
 const resultDescription = document.getElementById('result-description');
 
+// AdSense 정책 준수 참고: 사용자 데이터를 수집하거나 처리할 경우,
+// 해당 목적, 방법, 보유 기간 등을 명확히 고지하고 동의를 받아야 합니다.
+// 특히 개인 식별 정보(PII)의 취급에 유의해야 합니다.
 const userNameInput = document.getElementById('user-name');
 let userName = '';
 
