@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Gothic+Coding&family=Nanum+Pen+Script&display=swap');
+
 /* Reset and base styles */
 :root {
     /* New Trendy Pastel Palette */
@@ -33,7 +35,7 @@ body[data-theme='dark'] {
 
 body {
     margin: 0;
-    font-family: 'Nanum Gothic Coding', 'Arial', sans-serif;
+    font-family: 'Nanum Pen Script', 'Nanum Gothic Coding', 'Arial', sans-serif; /* Nanum Pen Script 추가 */
     background-color: var(--background-color);
     color: var(--text-color);
     display: flex;
@@ -42,8 +44,8 @@ body {
     min-height: 100vh;
     padding: var(--spacing-medium);
     box-sizing: border-box;
-    line-height: 1.6;
-    font-size: 16px; /* Base font size for better readability */
+    line-height: 1.8; /* 가독성을 위해 줄 간격 증가 */
+    font-size: 17px; /* Base font size for better readability */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -80,12 +82,19 @@ header {
 }
 
 header h1 {
+    font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--primary-color);
-    font-size: 2.6em; /* Slightly larger */
+    font-size: 2.8em; /* Slightly larger */
     margin-bottom: 8px; /* Adjusted margin */
     text-shadow: 3px 3px 8px var(--shadow-light); /* Softer, more prominent shadow */
     word-break: keep-all; /* Prevent breaking words in Korean titles */
-    line-height: 1.3; /* Adjusted line-height */
+    line-height: 1.2; /* Adjusted line-height */
+}
+
+header h1 .home-link { /* static page의 home-link에도 Jua 폰트 적용 */
+    font-family: 'Jua', sans-serif;
+    color: var(--primary-color);
+    text-decoration: none; /* 밑줄 제거 */
 }
 
 header p {
@@ -93,9 +102,7 @@ header p {
     font-size: 1.1em; /* Slightly larger */
 }
 
-.toggle-button {
-    /* Specific styles for the toggle button,
-       reusing .cute-button but potentially modifying it */
+.toggle-button, #home-button { /* 홈 버튼도 토글 버튼과 동일하게 스타일링 */
     padding: 10px 15px;
     font-size: 1.2em;
     border-radius: 50%; /* Make it round */
@@ -105,11 +112,11 @@ header p {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px var(--shadow-medium);
-    margin: 0; /* Remove default button margin */
+    margin: 0 5px; /* 버튼 간 간격 추가 */
     flex-shrink: 0; /* Prevent button from shrinking */
 }
 
-.toggle-button:hover {
+.toggle-button:hover, #home-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px var(--shadow-medium);
 }
@@ -213,8 +220,9 @@ header p {
 }
 
 #question-card h2 {
+    font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--text-color); /* Dark Gray for better readability on pastel */
-    font-size: 1.8em; /* Slightly larger */
+    font-size: 2em; /* Slightly larger */
     margin-bottom: var(--spacing-medium);
     line-height: 1.4; /* Adjusted line-height */
 }
@@ -262,8 +270,9 @@ header p {
 
 /* Result Screen */
 #result-title {
+    font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--primary-color);
-    font-size: 2.2em;
+    font-size: 2.5em;
     margin-bottom: var(--spacing-medium);
     line-height: 1.3; /* Adjusted line-height */
 }
@@ -278,13 +287,13 @@ header p {
 footer {
     margin-top: var(--spacing-large);
     color: var(--light-text-color);
-    font-size: 0.9em;
+    font-size: 0.95em; /* 약간 크게 */
 }
 
 footer a { /* Styling for footer links */
     color: var(--light-text-color);
     text-decoration: none;
-    margin: 0 5px;
+    margin: 0 8px; /* 간격 증가 */
     transition: color 0.3s ease;
 }
 
@@ -299,7 +308,7 @@ footer a:hover {
     max-width: 800px; /* Slightly wider than app-container for documents */
     margin: 20px auto;
     padding: var(--spacing-large);
-    line-height: 1.8;
+    line-height: 1.9; /* 줄 간격 더 넓게 */
     text-align: left;
     background-color: var(--card-background);
     border-radius: var(--border-radius-soft);
@@ -307,24 +316,27 @@ footer a:hover {
 }
 
 .static-page-content h2 {
+    font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--primary-color);
-    font-size: 2em;
+    font-size: 2.2em; /* 조금 더 크게 */
     margin-bottom: var(--spacing-medium);
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 .static-page-content h3 {
+    font-family: 'Gamja Flower', cursive; /* Gamja Flower 폰트 적용 */
     color: var(--text-color);
-    font-size: 1.5em;
+    font-size: 1.6em; /* 조금 더 크게 */
     margin-top: var(--spacing-large);
     margin-bottom: var(--spacing-small);
     border-bottom: 1px solid var(--light-text-color);
     padding-bottom: 5px;
 }
 
-.static-page-content p {
-    margin-bottom: var(--spacing-small);
+.static-page-content p, .static-page-content li {
+    font-size: 1.05em; /* 본문 폰트 약간 크게 */
+    color: var(--text-color);
 }
 
 .static-page-content ul {
@@ -337,10 +349,19 @@ footer a:hover {
     margin-bottom: 5px;
 }
 
+/* Home link in header of static pages */
+.home-link {
+    display: inline-block; /* 폰트 적용을 위해 블록 요소로 취급 */
+    text-decoration: none;
+}
+.home-link h1 { /* home-link 안의 h1 스타일 */
+    margin: 0; /* 기본 마진 제거 */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
-        font-size: 15px; /* Adjust base font size for smaller screens */
+        font-size: 16px; /* Adjust base font size for smaller screens */
     }
     #app-container {
         padding: var(--spacing-medium);
@@ -352,7 +373,10 @@ footer a:hover {
         margin: var(--spacing-small) auto;
     }
     header h1 {
-        font-size: 2.2em;
+        font-size: 2.4em;
+    }
+    header h1 .home-link {
+        font-size: 1em; /* 부모 h1에 맞춰 스케일 조정 */
     }
 
     .cute-button {
@@ -361,7 +385,7 @@ footer a:hover {
     }
 
     #question-card h2 {
-        font-size: 1.8em;
+        font-size: 1.9em;
     }
 
     .answer-btn {
@@ -370,20 +394,20 @@ footer a:hover {
     }
 
     #result-title {
-        font-size: 2em;
+        font-size: 2.2em;
     }
     .static-page-content h2 {
-        font-size: 1.8em;
+        font-size: 2em;
     }
     .static-page-content h3 {
-        font-size: 1.3em;
+        font-size: 1.4em;
     }
 }
 
 @media (max-width: 480px) {
     body {
         padding: var(--spacing-small);
-        font-size: 14px; /* Further adjust base font size */
+        font-size: 15px; /* Further adjust base font size */
     }
 
     #app-container {
@@ -394,17 +418,21 @@ footer a:hover {
     }
 
     header h1 {
-        font-size: 2em;
+        font-size: 2.1em;
+    }
+    header h1 .home-link {
+        font-size: 1em; /* 부모 h1에 맞춰 스케일 조정 */
     }
 
     header p {
         font-size: 1em;
     }
 
-    .toggle-button {
-        width: 40px;
-        height: 40px;
-        font-size: 1em;
+    .toggle-button, #home-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
+        margin: 0 3px;
     }
 
     .cute-button {
@@ -414,7 +442,7 @@ footer a:hover {
     }
 
     #question-card h2 {
-        font-size: 1.6em;
+        font-size: 1.7em;
     }
 
     .answer-btn {
@@ -423,16 +451,16 @@ footer a:hover {
     }
 
     #result-title {
-        font-size: 1.8em;
+        font-size: 2em;
     }
 
     #result-description {
         font-size: 1.05em;
     }
     .static-page-content h2 {
-        font-size: 1.6em;
+        font-size: 1.8em;
     }
     .static-page-content h3 {
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 }

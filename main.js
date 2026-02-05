@@ -1,7 +1,6 @@
 // main.js
 
 const appContainer = document.getElementById('app-container');
-const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
 // isMainPage 변수를 선언하여 현재 페이지가 index.html인지 여부를 판단
 // 'start-screen'은 index.html에만 존재하는 고유한 ID이므로 이를 사용
@@ -19,15 +18,17 @@ function toggleTheme() {
     applyTheme(newTheme);
 }
 
-// --- Event Listeners (테마 토글 버튼은 모든 페이지에서 작동해야 하므로 조건문 밖에 둠) ---
-if (themeToggleBtn) { // themeToggleBtn이 존재하는지 확인
-    themeToggleBtn.addEventListener('click', toggleTheme);
-}
-
+// --- Event Listeners ---
 document.addEventListener('DOMContentLoaded', () => {
     // 모든 페이지에서 테마 적용
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
+
+    // themeToggleBtn을 DOMContentLoaded 안에서 가져와서 이벤트 리스너를 등록합니다.
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    if (themeToggleBtn) { // themeToggleBtn이 존재하는지 확인
+        themeToggleBtn.addEventListener('click', toggleTheme);
+    }
 
     if (isMainPage) { // 메인 페이지(index.html)에서만 실행될 로직
         // Web Component 임포트 (main page에서만 필요)
