@@ -23,6 +23,8 @@ const resultDescription = document.getElementById('result-description');
 const userNameInput = document.getElementById('user-name');
 let userName = '';
 
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+
 let currentQuestionIndex = 0;
 let scores = {
     '모험가': 0,
@@ -197,6 +199,17 @@ const personalityTypes = {
 };
 
 // --- Functions ---
+function applyTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+}
+
 function showScreen(screenToShow) {
     const screens = [startScreen, questionScreen, resultScreen];
     screens.forEach(screen => {
@@ -312,8 +325,12 @@ ${shareUrl}`);
 startTestBtn.addEventListener('click', startTest);
 restartTestBtn.addEventListener('click', startTest);
 shareResultBtn.addEventListener('click', shareResult);
+themeToggleBtn.addEventListener('click', toggleTheme);
+themeToggleBtn.addEventListener('click', toggleTheme);
 
-// Initial display
+// Initial display and theme application
 document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
     showScreen(startScreen);
 });

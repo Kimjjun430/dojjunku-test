@@ -1,18 +1,33 @@
 /* Reset and base styles */
 :root {
-    --primary-color: #FFC0CB; /* Pastel Pink */
-    --secondary-color: #FFECB3; /* Pastel Yellow */
-    --accent-color: #B2EBF2; /* Pastel Cyan */
-    --text-color: #4A4A4A; /* Dark Gray */
-    --light-text-color: #888888; /* Medium Gray */
-    --background-color: #F8F8FF; /* Ghost White */
-    --card-background: #FFFFFF;
-    --button-hover: #FFD1DC; /* Lighter Pink */
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-medium: rgba(0, 0, 0, 0.15);
-    --border-radius-soft: 25px; /* More rounded */
+    /* New Trendy Pastel Palette */
+    --primary-color: #A3D8F4; /* Soft Blue */
+    --secondary-color: #F8B4CD; /* Soft Pink */
+    --accent-color: #FFDA79; /* Soft Yellow */
+    --text-color: #333333; /* Darker text for readability */
+    --light-text-color: #666666; /* Medium dark text */
+    --background-color: #F0F8FF; /* Alice Blue - light, airy background */
+    --card-background: #FFFFFF; /* Pure white for cards */
+    --button-hover: #8ECDDD; /* Slightly darker blue for hover */
+    --shadow-light: rgba(0, 0, 0, 0.05); /* Lighter shadow */
+    --shadow-medium: rgba(0, 0, 0, 0.12); /* Medium shadow */
+    --border-radius-soft: 18px; /* Slightly less rounded, more modern */
     --spacing-medium: 20px;
     --spacing-large: 30px;
+}
+
+/* Dark Theme Variables */
+body[data-theme='dark'] {
+    --primary-color: #79BFDA; /* Darker Soft Blue */
+    --secondary-color: #B28FB2; /* Darker Soft Pink */
+    --accent-color: #DAA520; /* Darker Soft Yellow / Goldenrod */
+    --text-color: #E0E0E0; /* Light text for dark background */
+    --light-text-color: #AAAAAA; /* Medium light text */
+    --background-color: #282C34; /* Dark background */
+    --card-background: #3A3F47; /* Darker card background */
+    --button-hover: #5D99C6; /* Darker blue for hover */
+    --shadow-light: rgba(255, 255, 255, 0.05); /* Light shadow for dark theme */
+    --shadow-medium: rgba(255, 255, 255, 0.1); /* Medium shadow for dark theme */
 }
 
 body {
@@ -32,7 +47,7 @@ body {
 #app-container {
     background-color: var(--card-background);
     border-radius: var(--border-radius-soft);
-    box-shadow: 0 10px 40px var(--shadow-medium); /* More pronounced shadow */
+    box-shadow: 0 12px 30px var(--shadow-medium); /* More refined shadow */
     padding: var(--spacing-large);
     max-width: 600px;
     width: 100%;
@@ -48,18 +63,50 @@ body {
 /* Header */
 header {
     margin-bottom: var(--spacing-large);
+    display: flex; /* Enable flexbox for alignment */
+    justify-content: space-between; /* Space out title/subtitle and toggle button */
+    align-items: center; /* Vertically align items */
+    position: relative; /* For absolute positioning of toggle if needed, or just for context */
+}
+
+.header-content {
+    flex-grow: 1; /* Allow header content to take up available space */
+    text-align: center; /* Center the text within its flex item */
+    margin-right: var(--spacing-medium); /* Space between content and button */
 }
 
 header h1 {
     color: var(--primary-color);
-    font-size: 2.8em; /* Slightly larger */
+    font-size: 2.6em; /* Slightly larger */
     margin-bottom: 10px;
     text-shadow: 3px 3px 8px var(--shadow-light); /* Softer, more prominent shadow */
+    word-break: keep-all; /* Prevent breaking words in Korean titles */
 }
 
 header p {
     color: var(--light-text-color);
-    font-size: 1.2em; /* Slightly larger */
+    font-size: 1.1em; /* Slightly larger */
+}
+
+.toggle-button {
+    /* Specific styles for the toggle button,
+       reusing .cute-button but potentially modifying it */
+    padding: 10px 15px;
+    font-size: 1.2em;
+    border-radius: 50%; /* Make it round */
+    width: 50px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    margin: 0; /* Remove default button margin */
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.toggle-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--shadow-medium);
 }
 
 /* Main Content Screens */
@@ -83,7 +130,7 @@ header p {
     height: auto;
     border-radius: var(--border-radius-soft); /* More rounded */
     margin-bottom: var(--spacing-medium);
-    box-shadow: 0 8px 20px var(--shadow-medium); /* More pronounced shadow */
+    box-shadow: 0 6px 15px var(--shadow-medium); /* More refined shadow */
 }
 
 .input-group {
@@ -103,7 +150,7 @@ header p {
 .input-group input[type="text"] {
     padding: 12px 18px; /* Slightly more padding */
     border: 2px solid var(--accent-color); /* Use accent color for border */
-    border-radius: var(--border-radius-soft); /* More rounded */
+    border-radius: 12px; /* Less rounded for a modern look */
     font-size: 1.1em;
     text-align: center;
     max-width: 280px; /* Slightly wider */
@@ -130,19 +177,19 @@ header p {
     color: white;
     border: none;
     border-radius: var(--border-radius-soft); /* More rounded */
-    padding: 18px 35px; /* Larger padding */
-    font-size: 1.3em; /* Larger font */
+    padding: 16px 30px; /* Larger padding */
+    font-size: 1.2em; /* Larger font */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 7px 20px var(--shadow-medium); /* More pronounced shadow */
+    box-shadow: 0 6px 15px var(--shadow-medium); /* More refined shadow */
     margin: 10px;
     outline: none;
 }
 
 .cute-button:hover {
     background-color: var(--button-hover);
-    transform: translateY(-5px); /* More lift */
+    transform: translateY(-4px); /* More lift */
     box-shadow: 0 10px 25px var(--shadow-medium);
 }
 
@@ -153,7 +200,7 @@ header p {
 
 /* Question Screen */
 #question-card {
-    background-color: var(--secondary-color); /* Pastel Yellow */
+    background-color: var(--card-background); /* White */
     padding: var(--spacing-medium);
     border-radius: var(--border-radius-soft); /* More rounded */
     box-shadow: 0 10px 30px var(--shadow-medium); /* More pronounced shadow */
@@ -162,7 +209,7 @@ header p {
 
 #question-card h2 {
     color: var(--text-color); /* Dark Gray for better readability on pastel */
-    font-size: 2em; /* Slightly larger */
+    font-size: 1.8em; /* Slightly larger */
     margin-bottom: var(--spacing-medium);
 }
 
@@ -183,12 +230,12 @@ header p {
     background-color: var(--card-background); /* White */
     color: var(--text-color);
     border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius-soft); /* More rounded */
+    border-radius: 12px; /* Less rounded for a modern look */
     padding: 15px;
     font-size: 1.1em;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px var(--shadow-light); /* Softer shadow */
+    box-shadow: 0 3px 8px var(--shadow-light); /* Softer shadow */
     text-align: left;
     width: 100%;
     box-sizing: border-box;
@@ -198,8 +245,8 @@ header p {
     background-color: var(--accent-color); /* Pastel Cyan */
     color: white;
     border-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 7px 18px var(--shadow-medium);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px var(--shadow-medium);
 }
 
 .answer-btn:active {
@@ -210,7 +257,7 @@ header p {
 /* Result Screen */
 #result-title {
     color: var(--primary-color);
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: var(--spacing-medium);
 }
 
@@ -224,7 +271,7 @@ header p {
 footer {
     margin-top: var(--spacing-large);
     color: var(--light-text-color);
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 /* Responsive adjustments */
