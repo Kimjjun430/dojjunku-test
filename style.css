@@ -44,8 +44,8 @@ body {
     min-height: 100vh;
     padding: var(--spacing-medium);
     box-sizing: border-box;
-    line-height: 1.8; /* 가독성을 위해 줄 간격 증가 */
-    font-size: 17px; /* Base font size for better readability */
+    line-height: 1.9; /* 가독성을 위해 줄 간격 증가 */
+    font-size: 18px; /* Base font size for better readability */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -84,7 +84,7 @@ header {
 header h1 {
     font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--primary-color);
-    font-size: 2.8em; /* Slightly larger */
+    font-size: 3em; /* Slightly larger */
     margin-bottom: 8px; /* Adjusted margin */
     text-shadow: 3px 3px 8px var(--shadow-light); /* Softer, more prominent shadow */
     word-break: keep-all; /* Prevent breaking words in Korean titles */
@@ -99,15 +99,15 @@ header h1 .home-link { /* static page의 home-link에도 Jua 폰트 적용 */
 
 header p {
     color: var(--light-text-color);
-    font-size: 1.1em; /* Slightly larger */
+    font-size: 1.2em; /* Slightly larger */
 }
 
 .toggle-button, #home-button { /* 홈 버튼도 토글 버튼과 동일하게 스타일링 */
     padding: 10px 15px;
-    font-size: 1.2em;
+    font-size: 1.3em; /* 폰트 크기 증가 */
     border-radius: 50%; /* Make it round */
-    width: 50px; /* Fixed width */
-    height: 50px; /* Fixed height */
+    width: 55px; /* Fixed width */
+    height: 55px; /* Fixed height */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,19 +153,19 @@ header p {
 }
 
 .input-group label {
-    font-size: 1.2em; /* Slightly larger */
+    font-size: 1.3em; /* Slightly larger */
     color: var(--text-color);
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .input-group input[type="text"] {
-    padding: 12px 18px; /* Slightly more padding */
+    padding: 14px 20px; /* Slightly more padding */
     border: 2px solid var(--accent-color); /* Use accent color for border */
     border-radius: 12px; /* Less rounded for a modern look */
-    font-size: 1.1em;
+    font-size: 1.2em; /* 폰트 크기 증가 */
     text-align: center;
-    max-width: 280px; /* Slightly wider */
+    max-width: 300px; /* Slightly wider */
     width: 80%;
     box-shadow: 0 4px 12px var(--shadow-light); /* Softer shadow */
     transition: all 0.3s ease;
@@ -189,8 +189,8 @@ header p {
     color: white;
     border: none;
     border-radius: var(--border-radius-soft); /* More rounded */
-    padding: 16px 30px; /* Larger padding */
-    font-size: 1.2em; /* Larger font */
+    padding: 18px 35px; /* Larger padding */
+    font-size: 1.3em; /* Larger font */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
@@ -222,13 +222,13 @@ header p {
 #question-card h2 {
     font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--text-color); /* Dark Gray for better readability on pastel */
-    font-size: 2em; /* Slightly larger */
+    font-size: 2.2em; /* Slightly larger */
     margin-bottom: var(--spacing-medium);
-    line-height: 1.4; /* Adjusted line-height */
+    line-height: 1.5; /* Adjusted line-height */
 }
 
 .question-number {
-    font-size: 1.2em;
+    font-size: 1.3em; /* 폰트 크기 증가 */
     color: var(--text-color);
     margin-bottom: 15px;
     opacity: 0.8;
@@ -245,8 +245,8 @@ header p {
     color: var(--text-color);
     border: 2px solid var(--primary-color);
     border-radius: 12px; /* Less rounded for a modern look */
-    padding: 15px;
-    font-size: 1.1em;
+    padding: 18px; /* 패딩 증가 */
+    font-size: 1.2em; /* 폰트 크기 증가 */
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 3px 8px var(--shadow-light); /* Softer shadow */
@@ -272,14 +272,14 @@ header p {
 #result-title {
     font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--primary-color);
-    font-size: 2.5em;
+    font-size: 2.8em; /* 폰트 크기 증가 */
     margin-bottom: var(--spacing-medium);
     line-height: 1.3; /* Adjusted line-height */
 }
 
 #result-description {
-    font-size: 1.2em;
-    line-height: 1.7;
+    font-size: 1.3em; /* 폰트 크기 증가 */
+    line-height: 1.8; /* 줄 간격 증가 */
     margin-bottom: var(--spacing-large);
 }
 
@@ -287,7 +287,7 @@ header p {
 footer {
     margin-top: var(--spacing-large);
     color: var(--light-text-color);
-    font-size: 0.95em; /* 약간 크게 */
+    font-size: 1em; /* 약간 크게 */
 }
 
 footer a { /* Styling for footer links */
@@ -318,7 +318,7 @@ footer a:hover {
 .static-page-content h2 {
     font-family: 'Jua', sans-serif; /* Jua 폰트 적용 */
     color: var(--primary-color);
-    font-size: 2.2em; /* 조금 더 크게 */
+    font-size: 2.4em; /* 조금 더 크게 */
     margin-bottom: var(--spacing-medium);
     text-align: center;
     line-height: 1.3;
@@ -327,7 +327,7 @@ footer a:hover {
 .static-page-content h3 {
     font-family: 'Gamja Flower', cursive; /* Gamja Flower 폰트 적용 */
     color: var(--text-color);
-    font-size: 1.6em; /* 조금 더 크게 */
+    font-size: 1.8em; /* 조금 더 크게 */
     margin-top: var(--spacing-large);
     margin-bottom: var(--spacing-small);
     border-bottom: 1px solid var(--light-text-color);
@@ -335,7 +335,7 @@ footer a:hover {
 }
 
 .static-page-content p, .static-page-content li {
-    font-size: 1.05em; /* 본문 폰트 약간 크게 */
+    font-size: 1.15em; /* 본문 폰트 약간 크게 */
     color: var(--text-color);
 }
 
@@ -361,7 +361,7 @@ footer a:hover {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
-        font-size: 16px; /* Adjust base font size for smaller screens */
+        font-size: 17px; /* Adjust base font size for smaller screens */
     }
     #app-container {
         padding: var(--spacing-medium);
@@ -373,41 +373,63 @@ footer a:hover {
         margin: var(--spacing-small) auto;
     }
     header h1 {
-        font-size: 2.4em;
+        font-size: 2.6em; /* 폰트 크기 증가 */
     }
     header h1 .home-link {
         font-size: 1em; /* 부모 h1에 맞춰 스케일 조정 */
     }
-
+    header p {
+        font-size: 1.15em; /* 폰트 크기 증가 */
+    }
+    .toggle-button, #home-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2em; /* 폰트 크기 증가 */
+    }
     .cute-button {
-        padding: 15px 30px;
-        font-size: 1.1em;
+        padding: 16px 30px;
+        font-size: 1.2em;
     }
 
     #question-card h2 {
-        font-size: 1.9em;
+        font-size: 2em; /* 폰트 크기 증가 */
     }
-
+    .question-number {
+        font-size: 1.25em; /* 폰트 크기 증가 */
+    }
+    .input-group label {
+        font-size: 1.25em; /* 폰트 크기 증가 */
+    }
+    .input-group input[type="text"] {
+        font-size: 1.15em; /* 폰트 크기 증가 */
+    }
     .answer-btn {
-        padding: 12px;
-        font-size: 1em;
+        padding: 15px;
+        font-size: 1.1em; /* 폰트 크기 증가 */
     }
 
     #result-title {
-        font-size: 2.2em;
+        font-size: 2.5em; /* 폰트 크기 증가 */
     }
+    #result-description {
+        font-size: 1.25em; /* 폰트 크기 증가 */
+    }
+
     .static-page-content h2 {
-        font-size: 2em;
+        font-size: 2.2em; /* 폰트 크기 증가 */
     }
     .static-page-content h3 {
-        font-size: 1.4em;
+        font-size: 1.5em; /* 폰트 크기 증가 */
+    }
+    .static-page-content p, .static-page-content li {
+        font-size: 1.1em; /* 폰트 크기 증가 */
     }
 }
 
 @media (max-width: 480px) {
     body {
         padding: var(--spacing-small);
-        font-size: 15px; /* Further adjust base font size */
+        font-size: 16px; /* Further adjust base font size */
     }
 
     #app-container {
@@ -418,49 +440,59 @@ footer a:hover {
     }
 
     header h1 {
-        font-size: 2.1em;
+        font-size: 2.3em; /* 폰트 크기 증가 */
     }
     header h1 .home-link {
         font-size: 1em; /* 부모 h1에 맞춰 스케일 조정 */
     }
 
     header p {
-        font-size: 1em;
+        font-size: 1.05em; /* 폰트 크기 증가 */
     }
 
     .toggle-button, #home-button {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1em;
+        width: 48px;
+        height: 48px;
+        font-size: 1.15em; /* 폰트 크기 증가 */
         margin: 0 3px;
     }
 
     .cute-button {
         padding: 12px 25px;
-        font-size: 1em;
+        font-size: 1.1em; /* 폰트 크기 증가 */
         margin: 5px;
     }
 
     #question-card h2 {
-        font-size: 1.7em;
+        font-size: 1.8em; /* 폰트 크기 증가 */
     }
-
+    .question-number {
+        font-size: 1.2em; /* 폰트 크기 증가 */
+    }
+    .input-group label {
+        font-size: 1.15em; /* 폰트 크기 증가 */
+    }
+    .input-group input[type="text"] {
+        font-size: 1.1em; /* 폰트 크기 증가 */
+    }
     .answer-btn {
         padding: 10px;
-        font-size: 0.95em;
+        font-size: 1.05em; /* 폰트 크기 증가 */
     }
 
     #result-title {
-        font-size: 2em;
+        font-size: 2.2em; /* 폰트 크기 증가 */
     }
-
     #result-description {
-        font-size: 1.05em;
+        font-size: 1.15em; /* 폰트 크기 증가 */
     }
     .static-page-content h2 {
-        font-size: 1.8em;
+        font-size: 2em; /* 폰트 크기 증가 */
     }
     .static-page-content h3 {
-        font-size: 1.3em;
+        font-size: 1.4em; /* 폰트 크기 증가 */
+    }
+    .static-page-content p, .static-page-content li {
+        font-size: 1.05em; /* 폰트 크기 증가 */
     }
 }
