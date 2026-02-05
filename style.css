@@ -17,7 +17,7 @@
 
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif; /* A cute, rounded font could be added via Google Fonts later */
+    font-family: 'Nanum Gothic Coding', 'Arial', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     display: flex;
