@@ -1,31 +1,10 @@
 // main.js
 
-// 전역 스코프에 선언된 appContainer 변수는 theme.js로 이동되었으므로 제거
-// const appContainer = document.getElementById('app-container');
-
 // isMainPage 변수를 선언하여 현재 페이지가 index.html인지 여부를 판단
 // 'start-screen'은 index.html에만 존재하는 고유한 ID이므로 이를 사용
 const isMainPage = document.getElementById('start-screen') !== null;
 
-// 메인 페이지 관련 전역 변수들 (초기값 null)
-let startScreen = null;
-let questionScreen = null;
-let resultScreen = null;
-
-let startTestBtn = null;
-let restartTestBtn = null;
-let shareResultBtn = null;
-
-let currentQuestionNumSpan = null;
-let questionCardContainer = null;
-
-let resultTitle = null;
-let resultImage = null;
-let resultDescription = null;
-
-let userNameInput = null;
-let userName = ''; // userName도 전역으로 선언
-
+let userName = ''; // userName은 전역으로 선언
 let currentQuestionIndex = 0;
 let scores = {
     '모험가': 0,
@@ -131,73 +110,97 @@ const questions = [
             { text: "아름다운 예술 작품, 독창적인 디자인, 그리고 창의적인 아이디어.", type: '예술가' },
             { text: "인류애, 사회 정의, 그리고 더 나은 세상을 위한 희망.", type: '이상주의자' },
             { text: "성공적인 프로젝트, 효율적인 시스템, 그리고 명확한 목표 달성.", type: '전략가' },
-                    { text: "따뜻한 격려의 말, 진심 어린 위로, 그리고 사람들의 행복한 미소.", type: '치유자' },
-                    { text: "실제적인 성과, 현실적인 해결책, 그리고 안정적인 일상.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "새로운 것을 배울 때, 당신은 어떤 방식을 선호하나요?",
-                options: [
-                    { text: "직접 해보고 부딪히면서 몸으로 익힌다.", type: '모험가' },
-                    { text: "관련 서적을 탐독하고 깊이 있게 분석하며 이해한다.", type: '사색가' },
-                    { text: "나만의 방식으로 재해석하거나 기존 지식을 활용하여 새로운 것을 창조한다.", type: '예술가' },
-                    { text: "배운 것을 통해 다른 사람들에게 도움이 될 방법을 모색한다.", type: '이상주의자' },
-                    { text: "학습 목표를 명확히 세우고 단계별로 효율적인 학습 전략을 따른다.", type: '전략가' },
-                    { text: "편안하고 즐거운 분위기에서 다른 사람들과 소통하며 배운다.", type: '치유자' },
-                    { text: "실생활에 바로 적용할 수 있는 실용적인 지식이나 기술을 배운다.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "당신이 가장 듣고 싶은 칭찬은?",
-                options: [
-                    { text: "역시 당신 덕분에 예상치 못한 즐거운 경험을 했어!", type: '모험가' },
-                    { text: "당신과 대화하면 항상 새로운 관점을 얻게 돼.", type: '사색가' },
-                    { text: "정말 당신다운, 독창적인 아이디어야!", type: '예술가' },
-                    { text: "당신 덕분에 세상이 좀 더 따뜻해졌어.", type: '이상주의자' },
-                    { text: "당신의 전략 덕분에 일이 완벽하게 성공했어!", type: '전략가' },
-                    { text: "당신이 있어서 정말 위로가 되고 마음이 편안해져.", type: '치유자' },
-                    { text: "역시 당신이야, 가장 현실적인 해결책을 제시해 줬어.", type: '현실주의자' }
-                ]
-            }
-        ];
+            { text: "따뜻한 격려의 말, 진심 어린 위로, 그리고 사람들의 행복한 미소.", type: '치유자' },
+            { text: "실제적인 성과, 현실적인 해결책, 그리고 안정적인 일상.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "새로운 것을 배울 때, 당신은 어떤 방식을 선호하나요?",
+        options: [
+            { text: "직접 해보고 부딪히면서 몸으로 익힌다.", type: '모험가' },
+            { text: "관련 서적을 탐독하고 깊이 있게 분석하며 이해한다.", type: '사색가' },
+            { text: "나만의 방식으로 재해석하거나 기존 지식을 활용하여 새로운 것을 창조한다.", type: '예술가' },
+            { text: "배운 것을 통해 다른 사람들에게 도움이 될 방법을 모색한다.", type: '이상주의자' },
+            { text: "학습 목표를 명확히 세우고 단계별로 효율적인 학습 전략을 따른다.", type: '전략가' },
+            { text: "편안하고 즐거운 분위기에서 다른 사람들과 소통하며 배운다.", type: '치유자' },
+            { text: "실생활에 바로 적용할 수 있는 실용적인 지식이나 기술을 배운다.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "당신이 가장 듣고 싶은 칭찬은?",
+        options: [
+            { text: "역시 당신 덕분에 예상치 못한 즐거운 경험을 했어!", type: '모험가' },
+            { text: "당신과 대화하면 항상 새로운 관점을 얻게 돼.", type: '사색가' },
+            { text: "정말 당신다운, 독창적인 아이디어야!", type: '예술가' },
+            { text: "당신 덕분에 세상이 좀 더 따뜻해졌어.", type: '이상주의자' },
+            { text: "당신의 전략 덕분에 일이 완벽하게 성공했어!", type: '전략가' },
+            { text: "당신이 있어서 정말 위로가 되고 마음이 편안해져.", type: '치유자' },
+            { text: "역시 당신이야, 가장 현실적인 해결책을 제시해 줬어.", type: '현실주의자' }
+        ]
+    }
+];
 
-        const personalityTypes = {
-            '모험가': {
-                title: '모험가',
-                description: '새로운 것을 찾아 떠나는 것을 두려워하지 않는 당신! 미지의 세계를 탐험하고 도전을 즐기는 진정한 모험가입니다. 당신의 쫀득쿠키는 언제나 예상 밖의 짜릿한 맛으로 가득할 거예요!',
-                image: 'image/모험가.png'
-            },
-            '사색가': {
-                title: '사색가',
-                description: '깊이 있는 생각과 성찰을 즐기는 당신. 복잡한 문제도 차분하게 분석하고 본질을 꿰뚫어 보는 지혜로운 사색가입니다. 당신의 쫀득쿠키는 한입 베어 물 때마다 깊은 여운을 남길 거예요.',
-                image: 'image/사색가.png'
-            },
-            '예술가': {
-                title: '예술가',
-                description: '평범함 속에서 아름다움을 발견하고 자신만의 색깔로 세상을 표현하는 당신! 자유로운 영혼과 넘치는 창의력으로 삶을 예술 작품처럼 만들어가는 예술가입니다. 당신의 쫀득쿠키는 눈과 입이 즐거운 컬러풀한 매력을 뽐낼 거예요.',
-                image: 'image/예술가.png'
-            },
-            '이상주의자': {
-                title: '이상주의자',
-                description: '더 나은 세상을 꿈꾸고 선한 영향력을 펼치고자 하는 당신. 따뜻한 마음과 굳건한 신념으로 희망을 심어주는 이상주의자입니다. 당신의 쫀득쿠키는 달콤한 꿈처럼 행복한 에너지를 전해줄 거예요.',
-                image: 'image/이상주의자.png'
-            },
-            '전략가': {
-                title: '전략가',
-                description: '목표를 향해 치밀하게 계획하고 실행하는 뛰어난 지략가인 당신! 냉철한 판단력과 탁월한 통찰력으로 어떤 상황에서도 최적의 길을 찾아내는 전략가입니다. 당신의 쫀득쿠키는 완벽한 조화로움을 선사할 거예요.',
-                image: 'image/전략가.png'
-            },
-            '치유자': {
-                title: '치유자',
-                description: '타인의 아픔에 공감하고 위로를 건네는 따뜻한 마음의 소유자. 당신의 존재 자체로 주변을 편안하게 하고 힘을 주는 진정한 치유자입니다. 당신의 쫀득쿠키는 지친 마음을 어루만져 주는 부드러운 위안이 될 거예요.',
-                image: 'image/치유자.png'
-            },
-            '현실주의자': {
-                title: '현실주의자',
-                description: '허황된 꿈보다는 현실을 직시하고 묵묵히 자신의 길을 걸어가는 당신. 안정과 실용성을 중요하게 여기며, 믿음직한 모습으로 주변에 든든한 버팀목이 되어주는 현실주의자입니다. 당신의 쫀득쿠키는 꾸밈없이 담백하고 진실된 맛을 보여줄 거예요.',
-                image: 'image/현실주의자.png'
-            }
-        };
+const personalityTypes = {
+    '모험가': {
+        title: '모험가',
+        description: '새로운 것을 찾아 떠나는 것을 두려워하지 않는 당신! 미지의 세계를 탐험하고 도전을 즐기는 진정한 모험가입니다. 당신의 쫀득쿠키는 언제나 예상 밖의 짜릿한 맛으로 가득할 거예요!',
+        image: 'image/모험가.png'
+    },
+    '사색가': {
+        title: '사색가',
+        description: '깊이 있는 생각과 성찰을 즐기는 당신. 복잡한 문제도 차분하게 분석하고 본질을 꿰뚫어 보는 지혜로운 사색가입니다. 당신의 쫀득쿠키는 한입 베어 물 때마다 깊은 여운을 남길 거예요.',
+        image: 'image/사색가.png'
+    },
+    '예술가': {
+        title: '예술가',
+        description: '평범함 속에서 아름다움을 발견하고 자신만의 색깔로 세상을 표현하는 당신! 자유로운 영혼과 넘치는 창의력으로 삶을 예술 작품처럼 만들어가는 예술가입니다. 당신의 쫀득쿠키는 눈과 입이 즐거운 컬러풀한 매력을 뽐낼 거예요.',
+        image: 'image/예술가.png'
+    },
+    '이상주의자': {
+        title: '이상주의자',
+        description: '더 나은 세상을 꿈꾸고 선한 영향력을 펼치고자 하는 당신. 따뜻한 마음과 굳건한 신념으로 희망을 심어주는 이상주의자입니다. 당신의 쫀득쿠키는 달콤한 꿈처럼 행복한 에너지를 전해줄 거예요.',
+        image: 'image/이상주의자.png'
+    },
+    '전략가': {
+        title: '전략가',
+        description: '목표를 향해 치밀하게 계획하고 실행하는 뛰어난 지략가인 당신! 냉철한 판단력과 탁월한 통찰력으로 어떤 상황에서도 최적의 길을 찾아내는 전략가입니다. 당신의 쫀득쿠키는 완벽한 조화로움을 선사할 거예요.',
+        image: 'image/전략가.png'
+    },
+    '치유자': {
+        title: '치유자',
+        description: '타인의 아픔에 공감하고 위로를 건네는 따뜻한 마음의 소유자. 당신의 존재 자체로 주변을 편안하게 하고 힘을 주는 진정한 치유자입니다. 당신의 쫀득쿠키는 지친 마음을 어루만져 주는 부드러운 위안이 될 거예요.',
+        image: 'image/치유자.png'
+    },
+    '현실주의자': {
+        title: '현실주의자',
+        description: '허황된 꿈보다는 현실을 직시하고 묵묵히 자신의 길을 걸어가는 당신. 안정과 실용성을 중요하게 여기며, 믿음직한 모습으로 주변에 든든한 버팀목이 되어주는 현실주의자입니다. 당신의 쫀득쿠키는 꾸밈없이 담백하고 진실된 맛을 보여줄 거예요.',
+        image: 'image/현실주의자.png'
+    }
+};
+
+// --- Event Listeners ---
+document.addEventListener('DOMContentLoaded', () => {
+    if (isMainPage) { // 메인 페이지(index.html)에서만 실행될 로직
+        // Web Component 임포트 (main page에서만 필요)
+        import './question-card.js';
+
+        // 메인 페이지의 DOM 요소들을 가져옵니다.
+        const startScreen = document.getElementById('start-screen');
+        const questionScreen = document.getElementById('question-screen');
+        const resultScreen = document.getElementById('result-screen');
+
+        const startTestBtn = document.getElementById('start-test-btn');
+        const restartTestBtn = document.getElementById('restart-test-btn');
+        const shareResultBtn = document.getElementById('share-result-btn');
+
+        const currentQuestionNumSpan = document.getElementById('current-question-num');
+        const questionCardContainer = document.getElementById('question-card');
+
+        const resultTitle = document.getElementById('result-title');
+        const resultImage = document.getElementById('result-image');
+        const resultDescription = document.getElementById('result-description');
+
+        const userNameInput = document.getElementById('user-name');
 
         // --- Functions (메인 페이지 관련) ---
         function showScreen(screenToShow) {
