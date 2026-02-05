@@ -182,7 +182,7 @@ const personalityTypes = {
 document.addEventListener('DOMContentLoaded', () => {
     if (isMainPage) { // 메인 페이지(index.html)에서만 실행될 로직
         // Web Component 임포트 (main page에서만 필요)
-        import './question-card.js';
+        import('./question-card.js');
 
         // 메인 페이지의 DOM 요소들을 가져옵니다.
         const startScreen = document.getElementById('start-screen');
