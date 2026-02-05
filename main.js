@@ -1,166 +1,136 @@
 // main.js
 
-const appContainer = document.getElementById('app-container');
+// 전역 스코프에 선언된 appContainer 변수는 theme.js로 이동되었으므로 제거
+// const appContainer = document.getElementById('app-container');
 
 // isMainPage 변수를 선언하여 현재 페이지가 index.html인지 여부를 판단
 // 'start-screen'은 index.html에만 존재하는 고유한 ID이므로 이를 사용
 const isMainPage = document.getElementById('start-screen') !== null;
 
-// --- Functions ---
-function applyTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-}
+// 메인 페이지 관련 전역 변수들 (초기값 null)
+let startScreen = null;
+let questionScreen = null;
+let resultScreen = null;
 
-function toggleTheme() {
-    const currentTheme = document.body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-}
+let startTestBtn = null;
+let restartTestBtn = null;
+let shareResultBtn = null;
 
-// --- Event Listeners ---
-document.addEventListener('DOMContentLoaded', () => {
-    // 모든 페이지에서 테마 적용
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme);
+let currentQuestionNumSpan = null;
+let questionCardContainer = null;
 
-    // themeToggleBtn을 DOMContentLoaded 안에서 가져와서 이벤트 리스너를 등록합니다.
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    if (themeToggleBtn) { // themeToggleBtn이 존재하는지 확인
-        themeToggleBtn.addEventListener('click', toggleTheme);
-    }
+let resultTitle = null;
+let resultImage = null;
+let resultDescription = null;
 
-    if (isMainPage) { // 메인 페이지(index.html)에서만 실행될 로직
-        // Web Component 임포트 (main page에서만 필요)
-        import './question-card.js';
+let userNameInput = null;
+let userName = ''; // userName도 전역으로 선언
 
-        // 메인 페이지의 DOM 요소들을 가져옵니다.
-        const startScreen = document.getElementById('start-screen');
-        const questionScreen = document.getElementById('question-screen');
-        const resultScreen = document.getElementById('result-screen');
+let currentQuestionIndex = 0;
+let scores = {
+    '모험가': 0,
+    '사색가': 0,
+    '예술가': 0,
+    '이상주의자': 0,
+    '전략가': 0,
+    '치유자': 0,
+    '현실주의자': 0
+};
 
-        const startTestBtn = document.getElementById('start-test-btn');
-        const restartTestBtn = document.getElementById('restart-test-btn');
-        const shareResultBtn = document.getElementById('share-result-btn');
-
-        const currentQuestionNumSpan = document.getElementById('current-question-num');
-        const questionCardContainer = document.getElementById('question-card');
-
-        const resultTitle = document.getElementById('result-title');
-        const resultImage = document.getElementById('result-image');
-        const resultDescription = document.getElementById('result-description');
-
-        // AdSense 정책 준수 참고: 사용자 데이터를 수집하거나 처리할 경우,
-        // 해당 목적, 방법, 보유 기간 등을 명확히 고지하고 동의를 받아야 합니다.
-        // 특히 개인 식별 정보(PII)의 취급에 유의해야 합니다.
-        const userNameInput = document.getElementById('user-name');
-        let userName = '';
-
-        let currentQuestionIndex = 0;
-        let scores = {
-            '모험가': 0,
-            '사색가': 0,
-            '예술가': 0,
-            '이상주의자': 0,
-            '전략가': 0,
-            '치유자': 0,
-            '현실주의자': 0
-        };
-
-        // --- Test Data ---
-        const questions = [
-            {
-                question: "주말에 새로운 활동을 계획한다면, 어떤 종류를 선택할까요?",
-                options: [
-                    { text: "숨겨진 등산로를 찾아 자연을 탐험하거나 새로운 스포츠에 도전한다.", type: '모험가' },
-                    { text: "조용한 카페에서 책을 읽거나 복잡한 퍼즐 게임에 몰두한다.", type: '사색가' },
-                    { text: "그림을 그리거나 악기를 연주하며 나만의 작품을 만든다.", type: '예술가' },
-                    { text: "사회 문제 해결을 위한 자원봉사에 참여하거나 의미 있는 강연을 듣는다.", type: '이상주의자' },
-                    { text: "다음 주 업무 계획을 세우거나 개인 재정 계획을 점검한다.", type: '전략가' },
-                    { text: "스파나 마사지를 받으며 몸과 마음의 피로를 푼다.", type: '치유자' },
-                    { text: "친구들과 만나 맛집을 탐방하거나 영화를 본다.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "팀 프로젝트를 할 때 당신의 역할은 주로 무엇인가요?",
-                options: [
-                    { text: "새로운 아이디어를 제시하고 팀원들의 참여를 독려한다.", type: '모험가' },
-                    { text: "팀의 목표와 방향성을 깊이 고민하고 비판적으로 분석한다.", type: '사색가' },
-                    { text: "프로젝트의 미적 요소를 담당하거나 독창적인 방식으로 문제를 해결한다.", type: '예술가' },
-                    { text: "팀원들의 의견을 조율하고 긍정적인 분위기를 만들며 이상적인 결과를 추구한다.", type: '이상주의자' },
-                    { text: "명확한 계획을 세우고 각자의 역할을 분배하여 효율성을 높인다.", type: '전략가' },
-                    { text: "팀원들의 고충을 듣고 공감하며 심리적 지지를 제공한다.", type: '치유자' },
-                    { text: "현실적인 제약 조건을 고려하여 실현 가능한 목표를 설정한다.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "당신에게 '성공'이란 무엇을 의미하나요?",
-                options: [
-                    { text: "아무도 가보지 못한 길을 개척하고 새로운 경험을 얻는 것.", type: '모험가' },
-                    { text: "삶의 본질적인 질문에 대한 답을 찾고 자신만의 철학을 확립하는 것.", type: '사색가' },
-                    { text: "나만의 독창적인 결과물을 만들어 세상에 선보이는 것.", type: '예술가' },
-                    { text: "나의 노력으로 세상이 좀 더 나은 곳으로 변화하는 것을 보는 것.", type: '이상주의자' },
-                    { text: "세운 목표를 달성하고 그 과정에서 효율성과 성과를 최적화하는 것.", type: '전략가' },
-                    { text: "주변 사람들과 함께 행복하고 평화로운 삶을 만들어가는 것.", type: '치유자' },
-                    { text: "경제적 안정과 사회적 인정을 얻으며 편안한 삶을 영위하는 것.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "여행지에서 예상치 못한 문제가 발생했을 때 당신의 대처 방식은?",
-                options: [
-                    { text: "'이것도 추억이지!' 하며 새로운 해결책을 찾거나 우회하는 길을 즐긴다.", type: '모험가' },
-                    { text: "잠시 멈춰 서서 문제의 원인을 분석하고 최적의 해결 방안을 고민한다.", type: '사색가' },
-                    { text: "이 상황을 영감 삼아 새로운 아이디어를 얻거나 재미있는 방식으로 극복한다.", type: '예술가' },
-                    { text: "주변 사람들의 도움을 청하거나 다른 사람들에게 피해가 가지 않도록 노력한다.", type: '이상주의자' },
-                    { text: "당황하지 않고 침착하게 여러 대안을 검토하며 가장 효율적인 방법을 선택한다.", type: '전략가' },
-                    { text: "동행한 사람들의 불안감을 먼저 살피고, 그들을 안심시키는 데 집중한다.", type: '치유자' },
-                    { text: "현실적으로 가능한 선에서 문제를 해결하고, 더 큰 손실을 막는 데 주력한다.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "당신이 가장 중요하게 생각하는 가치는 무엇인가요?",
-                options: [
-                    { text: "자유와 도전", type: '모험가' },
-                    { text: "지혜와 통찰", type: '사색가' },
-                    { text: "아름다움과 독창성", type: '예술가' },
-                    { text: "정의와 평화", type: '이상주의자' },
-                    { text: "효율과 성과", type: '전략가' },
-                    { text: "공감과 배려", type: '치유자' },
-                    { text: "안정과 실용성", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "스트레스를 해소하는 당신만의 방법은?",
-                options: [
-                    { text: "즉흥적으로 여행을 떠나거나 평소 안 해본 것을 시도한다.", type: '모험가' },
-                    { text: "조용한 곳에서 명상을 하거나 깊은 생각에 잠긴다.", type: '사색가' },
-                    { text: "좋아하는 음악을 크게 틀고 춤을 추거나 창작 활동에 몰두한다.", type: '예술가' },
-                    { text: "고민을 털어놓을 친구를 찾아 이야기하거나 사회 활동에 참여한다.", type: '이상주의자' },
-                    { text: "스트레스의 원인을 분석하고 해결을 위한 구체적인 계획을 세운다.", type: '전략가' },
-                    { text: "따뜻한 물에 몸을 담그거나 맛있는 음식을 먹으며 스스로를 위로한다.", type: '치유자' },
-                    { text: "친한 사람들과 술 한잔 기울이거나 맛있는 것을 먹으며 현실을 잊는다.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "미래를 계획할 때, 당신은 어떤 면을 가장 중요하게 생각하나요?",
-                options: [
-                    { text: "새로운 가능성을 열어두고 언제든 변화에 유연하게 대처할 수 있도록 한다.", type: '모험가' },
-                    { text: "깊은 통찰을 바탕으로 장기적인 안목으로 계획을 세운다.", type: '사색가' },
-                    { text: "틀에 갇히지 않고 나만의 방식으로 독창적인 미래를 그려나간다.", type: '예술가' },
-                    { text: "사회에 긍정적인 영향을 미치고 이상적인 가치를 실현할 수 있는 방향으로 계획한다.", type: '이상주의자' },
-                    { text: "목표 달성을 위한 가장 효율적이고 실현 가능한 전략을 수립한다.", type: '전략가' },
-                    { text: "주변 사람들과 함께 행복을 추구하고, 서로에게 도움이 되는 방향으로 계획한다.", type: '치유자' },
-                    { text: "현실적인 제약과 자신의 능력을 고려하여 안정적이고 실용적인 계획을 세운다.", type: '현실주의자' }
-                ]
-            },
-            {
-                question: "당신에게 영감을 주는 것은 무엇인가요?",
-                options: [
-                    { text: "미지의 세계, 새로운 경험, 그리고 예측 불가능한 변화.", type: '모험가' },
-                    { text: "철학적인 사상, 복잡한 이론, 그리고 인간의 본질에 대한 탐구.", type: '사색가' },
-                    { text: "아름다운 예술 작품, 독창적인 디자인, 그리고 창의적인 아이디어.", type: '예술가' },
-                    { text: "인류애, 사회 정의, 그리고 더 나은 세상을 위한 희망.", type: '이상주의자' },
-                    { text: "성공적인 프로젝트, 효율적인 시스템, 그리고 명확한 목표 달성.", type: '전략가' },
+// --- Test Data ---
+const questions = [
+    {
+        question: "주말에 새로운 활동을 계획한다면, 어떤 종류를 선택할까요?",
+        options: [
+            { text: "숨겨진 등산로를 찾아 자연을 탐험하거나 새로운 스포츠에 도전한다.", type: '모험가' },
+            { text: "조용한 카페에서 책을 읽거나 복잡한 퍼즐 게임에 몰두한다.", type: '사색가' },
+            { text: "그림을 그리거나 악기를 연주하며 나만의 작품을 만든다.", type: '예술가' },
+            { text: "사회 문제 해결을 위한 자원봉사에 참여하거나 의미 있는 강연을 듣는다.", type: '이상주의자' },
+            { text: "다음 주 업무 계획을 세우거나 개인 재정 계획을 점검한다.", type: '전략가' },
+            { text: "스파나 마사지를 받으며 몸과 마음의 피로를 푼다.", type: '치유자' },
+            { text: "친구들과 만나 맛집을 탐방하거나 영화를 본다.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "팀 프로젝트를 할 때 당신의 역할은 주로 무엇인가요?",
+        options: [
+            { text: "새로운 아이디어를 제시하고 팀원들의 참여를 독려한다.", type: '모험가' },
+            { text: "팀의 목표와 방향성을 깊이 고민하고 비판적으로 분석한다.", type: '사색가' },
+            { text: "프로젝트의 미적 요소를 담당하거나 독창적인 방식으로 문제를 해결한다.", type: '예술가' },
+            { text: "팀원들의 의견을 조율하고 긍정적인 분위기를 만들며 이상적인 결과를 추구한다.", type: '이상주의자' },
+            { text: "명확한 계획을 세우고 각자의 역할을 분배하여 효율성을 높인다.", type: '전략가' },
+            { text: "팀원들의 고충을 듣고 공감하며 심리적 지지를 제공한다.", type: '치유자' },
+            { text: "현실적인 제약 조건을 고려하여 실현 가능한 목표를 설정한다.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "당신에게 '성공'이란 무엇을 의미하나요?",
+        options: [
+            { text: "아무도 가보지 못한 길을 개척하고 새로운 경험을 얻는 것.", type: '모험가' },
+            { text: "삶의 본질적인 질문에 대한 답을 찾고 자신만의 철학을 확립하는 것.", type: '사색가' },
+            { text: "나만의 독창적인 결과물을 만들어 세상에 선보이는 것.", type: '예술가' },
+            { text: "나의 노력으로 세상이 좀 더 나은 곳으로 변화하는 것을 보는 것.", type: '이상주의자' },
+            { text: "세운 목표를 달성하고 그 과정에서 효율성과 성과를 최적화하는 것.", type: '전략가' },
+            { text: "주변 사람들과 함께 행복하고 평화로운 삶을 만들어가는 것.", type: '치유자' },
+            { text: "경제적 안정과 사회적 인정을 얻으며 편안한 삶을 영위하는 것.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "여행지에서 예상치 못한 문제가 발생했을 때 당신의 대처 방식은?",
+        options: [
+            { text: "'이것도 추억이지!' 하며 새로운 해결책을 찾거나 우회하는 길을 즐긴다.", type: '모험가' },
+            { text: "잠시 멈춰 서서 문제의 원인을 분석하고 최적의 해결 방안을 고민한다.", type: '사색가' },
+            { text: "이 상황을 영감 삼아 새로운 아이디어를 얻거나 재미있는 방식으로 극복한다.", type: '예술가' },
+            { text: "주변 사람들의 도움을 청하거나 다른 사람들에게 피해가 가지 않도록 노력한다.", type: '이상주의자' },
+            { text: "당황하지 않고 침착하게 여러 대안을 검토하며 가장 효율적인 방법을 선택한다.", type: '전략가' },
+            { text: "동행한 사람들의 불안감을 먼저 살피고, 그들을 안심시키는 데 집중한다.", type: '치유자' },
+            { text: "현실적으로 가능한 선에서 문제를 해결하고, 더 큰 손실을 막는 데 주력한다.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "당신이 가장 중요하게 생각하는 가치는 무엇인가요?",
+        options: [
+            { text: "자유와 도전", type: '모험가' },
+            { text: "지혜와 통찰", type: '사색가' },
+            { text: "아름다움과 독창성", type: '예술가' },
+            { text: "정의와 평화", type: '이상주의자' },
+            { text: "효율과 성과", type: '전략가' },
+            { text: "공감과 배려", type: '치유자' },
+            { text: "안정과 실용성", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "스트레스를 해소하는 당신만의 방법은?",
+        options: [
+            { text: "즉흥적으로 여행을 떠나거나 평소 안 해본 것을 시도한다.", type: '모험가' },
+            { text: "조용한 곳에서 명상을 하거나 깊은 생각에 잠긴다.", type: '사색가' },
+            { text: "좋아하는 음악을 크게 틀고 춤을 추거나 창작 활동에 몰두한다.", type: '예술가' },
+            { text: "고민을 털어놓을 친구를 찾아 이야기하거나 사회 활동에 참여한다.", type: '이상주의자' },
+            { text: "스트레스의 원인을 분석하고 해결을 위한 구체적인 계획을 세운다.", type: '전략가' },
+            { text: "따뜻한 물에 몸을 담그거나 맛있는 음식을 먹으며 스스로를 위로한다.", type: '치유자' },
+            { text: "친한 사람들과 술 한잔 기울이거나 맛있는 것을 먹으며 현실을 잊는다.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "미래를 계획할 때, 당신은 어떤 면을 가장 중요하게 생각하나요?",
+        options: [
+            { text: "새로운 가능성을 열어두고 언제든 변화에 유연하게 대처할 수 있도록 한다.", type: '모험가' },
+            { text: "깊은 통찰을 바탕으로 장기적인 안목으로 계획을 세운다.", type: '사색가' },
+            { text: "틀에 갇히지 않고 나만의 방식으로 독창적인 미래를 그려나간다.", type: '예술가' },
+            { text: "사회에 긍정적인 영향을 미치고 이상적인 가치를 실현할 수 있는 방향으로 계획한다.", type: '이상주의자' },
+            { text: "목표 달성을 위한 가장 효율적이고 실현 가능한 전략을 수립한다.", type: '전략가' },
+            { text: "주변 사람들과 함께 행복하고 평화로운 삶을 만들어가는 것.", type: '치유자' },
+            { text: "현실적인 제약과 자신의 능력을 고려하여 안정적이고 실용적인 계획을 세운다.", type: '현실주의자' }
+        ]
+    },
+    {
+        question: "당신에게 영감을 주는 것은 무엇인가요?",
+        options: [
+            { text: "미지의 세계, 새로운 경험, 그리고 예측 불가능한 변화.", type: '모험가' },
+            { text: "철학적인 사상, 복잡한 이론, 그리고 인간의 본질에 대한 탐구.", type: '사색가' },
+            { text: "아름다운 예술 작품, 독창적인 디자인, 그리고 창의적인 아이디어.", type: '예술가' },
+            { text: "인류애, 사회 정의, 그리고 더 나은 세상을 위한 희망.", type: '이상주의자' },
+            { text: "성공적인 프로젝트, 효율적인 시스템, 그리고 명확한 목표 달성.", type: '전략가' },
                     { text: "따뜻한 격려의 말, 진심 어린 위로, 그리고 사람들의 행복한 미소.", type: '치유자' },
                     { text: "실제적인 성과, 현실적인 해결책, 그리고 안정적인 일상.", type: '현실주의자' }
                 ]
