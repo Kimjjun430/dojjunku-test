@@ -8,9 +8,9 @@ This project implements a "두바이 쫀득쿠키 성격 테스트" (Dubai Jjond
 
 ### Aesthetic & UI/UX
 -   **Theme:** "파스텔톤의 귀여운 캐릭터 테스트 웹사이트" - 동글동글하고 스티커 같은 일러스트 스타일.
--   **Layout:** Clean, balanced, and mobile-responsive layout suitable for various screen sizes, with an emphasis on soft, rounded elements.
+-   **Layout:** Clean, balanced, and mobile-responsive layout suitable for various screen sizes, with an emphasis on soft, rounded elements. Enhanced text placement with refined line heights and margins for a cleaner look.
 -   **Colors:** Utilizes a refreshed pastel color palette for a trendy and professional look. Supports **Dark Mode** with a distinct dark color palette.
--   **Typography:** Expressive and relevant fonts, with varied sizes for emphasis (e.g., hero text, question headlines, answer options). Uses 'Nanum Gothic Coding' for a clean and cute Korean-friendly look. The `word-break: keep-all;` property is applied to the main title (`header h1`) to ensure proper Korean word wrapping.
+-   **Typography:** Expressive and relevant fonts, with varied sizes for emphasis (e.g., hero text, question headlines, answer options). Uses 'Nanum Gothic Coding' for a clean, cute, and Korean-friendly look. Text colors are carefully chosen for readability against both light and dark backgrounds. The `word-break: keep-all;` property is applied to the main title (`header h1`) to ensure proper Korean word wrapping.
 -   **Iconography:** Cute and intuitive icons will be used where appropriate.
 -   **Visual Effects:** Subtle animations, multi-layered drop shadows, and gradients to create depth and a lifted "sticker-like" feel. Interactive elements (buttons, inputs) will have soft glow effects on hover/focus.
 -   **Images:** Character images are provided by the user in the `image/` folder.
@@ -37,21 +37,17 @@ This project implements a "두바이 쫀득쿠키 성격 테스트" (Dubai Jjond
 
 ### Technical Implementation
 -   **HTML (`index.html`):** Main entry point, updated for image paths, name input, dynamic result title, and includes a theme toggle button in the header.
--   **CSS (`style.css`):** Overhauled to implement the new pastel/sticker aesthetic, including an updated color palette, more rounded elements, and soft shadow effects. Includes specific styles for dark mode using `[data-theme='dark']` attributes. The `word-break: keep-all;` property is added to `header h1` to improve Korean title wrapping.
+-   **CSS (`style.css`):** Overhauled to implement the new pastel/sticker aesthetic, including an updated color palette, more rounded elements, soft shadow effects, and refined text placement/typography. Includes specific styles for dark mode using `[data-theme='dark']` attributes. The `word-break: keep-all;` property is added to `header h1` to improve Korean title wrapping.
 -   **JavaScript (`main.js`):** Updated with new personality types, their descriptions, image paths, and revised question/scoring logic for 7 types. Handles name input, validation, and incorporates name into results/sharing. Includes comprehensive logic for dark mode toggle, saving user preference to `localStorage`, and applying the theme on page load.
 -   **Web Components (`question-card.js`):** Custom Elements for reusable question cards, compatible with the new aesthetic and updated data structure.
 
 ## 3. Current Plan & To-Do List
 
 ### Goal
-To implement the "두바이 쫀득쿠키 성격 테스트" with 7 new character-based personality types, integrate user-provided images, and apply a pastel, sticker-like aesthetic.
+To implement the "두바이 쫀득쿠키 성격 테스트" with 7 new character-based personality types, integrate user-provided images, apply a pastel, sticker-like aesthetic, and enhance overall UI/UX.
 
 ### Steps
-1.  **[completed] Discover the contents of the `image` folder.**
-2.  **[completed] Update `blueprint.md` to detail the new personality types, image integration strategy, revised questions, and the new pastel/sticker aesthetic.**
-3.  **[completed] Redefine 7 personality types, their descriptions, and assign appropriate images from the `image` folder in `main.js`.**
-4.  **[completed] Recreate 10 questions and answer options, with scoring logic tailored to the 7 new personality types, in `main.js`.**
-5.  **[completed] Update `main.js` with the new questions, options, and personality type data.**
-6.  **[completed] Update `index.html` to reflect any structural changes needed for the new image paths and specifically set the main cookie image from the `image` folder.**
-7.  **[completed] Overhaul `style.css` to implement the "pastel-toned, round and sticker-like illustration style" aesthetic.**
-8.  **[completed] Final review and testing of the application.**
+1.  **[completed] Refine text placement for cleaner layout.**
+2.  **[completed] Enhance typography with cuter font choices and colors.**
+3.  **[completed] Update `blueprint.md` to reflect all these new changes.**
+4.  **[pending] Final review and testing of the application.**
