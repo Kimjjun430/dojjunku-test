@@ -2,101 +2,48 @@
 
 ## 1. Overview
 
-This project implements a "Dubai Jjonddeok Cookie Personality Test" (두바이 쫀득쿠키 테스트). The test will feature approximately 10 questions designed to determine a user's personality type, presented with a "pretty and cute" aesthetic. The application will be a framework-less web project using HTML, CSS, and modern JavaScript (ES Modules, Web Components) as per Firebase Studio guidelines. It will be responsive and visually engaging, incorporating placeholder images to enhance the cute theme.
+This project implements a "두바이 쫀득쿠키 성격 테스트" (Dubai Jjonddeok Cookie Personality Test) specifically targeting a **Korean audience**. The test features 10 questions designed to determine a user's personality type, presented with a "pretty and cute" aesthetic. The application is a framework-less web project using HTML, CSS, and modern JavaScript (ES Modules, Web Components) as per Firebase Studio guidelines. It is responsive and visually engaging, incorporating placeholder images that will be eventually replaced with cute cookie icons or suitable generated images to enhance the cute theme. Users can input their name, which will be integrated into the test results.
 
 ## 2. Design Principles & Features
 
 ### Aesthetic & UI/UX
--   **Theme:** "Pretty and Cute" inspired by the delicious and visually appealing Dubai Jjonddeok Cookies.
+-   **Theme:** "Pretty and Cute" inspired by the delicious and visually appealing Dubai Jjonddeok Cookies, tailored for a Korean audience.
 -   **Layout:** Clean, balanced, and mobile-responsive layout suitable for various screen sizes.
 -   **Colors:** Vibrant and energetic color palette with a wide range of hues, perhaps pastels or bright, cheerful tones.
--   **Typography:** Expressive and relevant fonts, with varied sizes for emphasis (e.g., hero text, question headlines, answer options).
+-   **Typography:** Expressive and relevant fonts, with varied sizes for emphasis (e.g., hero text, question headlines, answer options). Specifically uses 'Nanum Gothic Coding' for a clean and cute Korean-friendly look.
 -   **Iconography:** Incorporate cute and intuitive icons where appropriate to enhance understanding and navigation.
 -   **Visual Effects:** Subtle animations, multi-layered drop shadows, and gradients to create depth and a premium feel. Interactive elements (buttons, sliders) will have a "glow" effect on hover/focus.
--   **Images:** Placeholder images will be used initially, relevant to Dubai Jjonddeok Cookies or cute, whimsical themes. These will be appropriately sized and licensed (or clearly marked as placeholders).
--   **Interactivity:** Intuitive navigation, clear call-to-action buttons, and smooth transitions between questions and results.
+-   **Images:** Currently uses `picsum.photos` seeded URLs as thematic placeholders. These are intended to be replaced with actual cute cookie icons or custom-generated images relevant to the personality types and the overall theme.
+-   **Interactivity:** Intuitive navigation, clear call-to-action buttons, and smooth transitions between questions and results. Includes a name input field on the start screen.
 
 ### Core Functionality
--   **Question Flow:** Users will progress through approximately 10 multiple-choice questions.
+-   **Questions and Results in Korean:** All questions, options, and personality descriptions are fully translated into Korean for the target audience.
+-   **Name Input:** Users can enter their name on the start screen, which is then used in the personalized result display and share message.
+-   **Question Flow:** Users will progress through 10 multiple-choice questions.
 -   **Personality Types:**
-    *   **The Golden Delight (황금빛 기쁨):** Optimistic, cheerful, always looking for the bright side, brings joy to others.
-    *   **The Soft Heart (부드러운 마음):** Empathetic, kind, gentle, supportive, values harmony.
-    *   **The Spicy Adventurer (매콤한 모험가):** Bold, curious, loves new experiences, energetic, thrives on excitement.
-    *   **The Rich & Deep Thinker (깊고 풍부한 사색가):** Introspective, thoughtful, appreciates depth, enjoys quiet contemplation.
--   **Questions and Scoring Logic (Draft):**
-    Each question will have 3-4 options, with points assigned to answers that align with each personality type. The personality type with the highest score at the end will be the result.
-    1.  **Question 1:** Imagine you're about to try a Dubai Jjonddeok Cookie for the first time. What's your first thought?
-        *   A) "Wow, it looks so shiny and delicious! I bet it'll make my day brighter!" (Golden Delight +3)
-        *   B) "I wonder what delightful textures and flavors await inside this gentle-looking treat." (Soft Heart +3)
-        *   C) "Is there a new, unique flavor I haven't tried? I hope it surprises me!" (Spicy Adventurer +3)
-        *   D) "I'm curious about its origin and the craftsmanship behind this exquisite dessert." (Rich & Deep Thinker +3)
-    2.  **Question 2:** How do you typically approach a new challenge?
-        *   A) With enthusiasm and a positive attitude, believing everything will work out. (Golden Delight +3)
-        *   B) By considering everyone's feelings and seeking a harmonious solution. (Soft Heart +3)
-        *   C) By diving in headfirst, ready to experiment and take risks. (Spicy Adventurer +3)
-        *   D) By analyzing all aspects carefully before making a move. (Rich & Deep Thinker +3)
-    3.  **Question 3:** What kind of gathering do you enjoy most?
-        *   A) A lively party where everyone is laughing and having fun. (Golden Delight +3)
-        *   B) A cozy get-together with close friends, sharing heartfelt conversations. (Soft Heart +3)
-        *   C) An exciting event with new people and unexpected activities. (Spicy Adventurer +3)
-        *   D) A quiet evening discussing interesting topics or enjoying a good book. (Rich & Deep Thinker +3)
-    4.  **Question 4:** What's your favorite part about eating a delicious dessert?
-        *   A) The immediate burst of happiness and sweet satisfaction. (Golden Delight +3)
-        *   B) The comforting and tender feeling it leaves. (Soft Heart +3)
-        *   C) The unique and surprising flavors that tingle your taste buds. (Spicy Adventurer +3)
-        *   D) The complex layers of flavor that unfold with each bite. (Rich & Deep Thinker +3)
-    5.  **Question 5:** How do you react to unexpected changes in plans?
-        *   A) You quickly adapt and find the positive aspects of the new situation. (Golden Delight +3)
-        *   B) You try to ensure everyone involved is comfortable with the new direction. (Soft Heart +3)
-        *   C) You see it as an opportunity for an unplanned adventure. (Spicy Adventurer +3)
-        *   D) You take a moment to re-evaluate and plan your next steps. (Rich & Deep Thinker +3)
-    6.  **Question 6:** What do you value most in a friendship?
-        *   A) Shared laughter and uplifting moments. (Golden Delight +3)
-        *   B) Deep understanding and mutual support. (Soft Heart +3)
-        *   C) Exciting new experiences and challenges together. (Spicy Adventurer +3)
-        *   D) Meaningful conversations and intellectual stimulation. (Rich & Deep Thinker +3)
-    7.  **Question 7:** What's your ideal way to relax after a long day?
-        *   A) Doing something fun and light-hearted to boost your mood. (Golden Delight +3)
-        *   B) Enjoying a peaceful and quiet activity, perhaps with a warm drink. (Soft Heart +3)
-        *   C) Trying out a new hobby or exploring a new place. (Spicy Adventurer +3)
-        *   D) Reflecting on the day's events and planning for tomorrow. (Rich & Deep Thinker +3)
-    8.  **Question 8:** If you were a color, what would you be?
-        *   A) Bright Yellow or Radiant Orange. (Golden Delight +3)
-        *   B) Soft Pink or Calming Blue. (Soft Heart +3)
-        *   C) Fiery Red or Electric Green. (Spicy Adventurer +3)
-        *   D) Deep Purple or Earthy Brown. (Rich & Deep Thinker +3)
-    9.  **Question 9:** What kind of music do you prefer?
-        *   A) Upbeat pop or cheerful instrumental. (Golden Delight +3)
-        *   B) Calming melodies or gentle ballads. (Soft Heart +3)
-        *   C) Energetic rock or adventurous world music. (Spicy Adventurer +3)
-        *   D) Thought-provoking classical or soulful jazz. (Rich & Deep Thinker +3)
-    10. **Question 10:** What's your motto in life?
-        *   A) "Every day is a gift!" (Golden Delight +3)
-        *   B) "Kindness makes the world go round." (Soft Heart +3)
-        *   C) "Life's an adventure, live it to the fullest!" (Spicy Adventurer +3)
-        *   D) "Understand deeply, live meaningfully." (Rich & Deep Thinker +3)
--   **Scoring:** A scoring mechanism will tally user choices to determine the final personality type.
--   **Results Page:** Displays the determined personality type, a detailed description, and a matching image. The logic for this is implemented in `main.js`'s `showResult` function.
--   **Sharing:** An option to share results via `navigator.share` (for supported browsers) or an alert fallback, generating a shareable text snippet based on the user's personality result. This is handled by the `shareResult` function in `main.js`.
+    *   **황금빛 기쁨 (The Golden Delight):** 낙천적이고 쾌활하며 항상 삶의 밝은 면을 봅니다. 당신의 긍정적인 에너지는 주변 사람들에게 행복을 가져다줍니다. 마치 황금빛 쫀득쿠키처럼, 어디서든 빛나고 달콤함을 선사하는 존재입니다!
+    *   **부드러운 마음 (The Soft Heart):** 공감 능력이 뛰어나고 친절하며 온화합니다. 주변 사람들을 지지하고 조화를 중요하게 생각하는 당신의 마음은 부드러운 쫀득쿠키 속살처럼 따뜻하고 포근합니다.
+    *   **매콤한 모험가 (The Spicy Adventurer):** 당신은 대담하고 호기심이 많으며 새로운 경험을 사랑합니다. 에너지가 넘치고 흥미진진한 도전을 즐기는 당신은 예상치 못한 맛으로 가득 찬 매콤한 쫀득쿠키와 같습니다. 늘 새로운 모험을 찾아 떠나죠!
+    *   **깊고 풍부한 사색가 (The Rich & Deep Thinker):** 당신은 내성적이고 사려 깊으며 깊이 있는 것을 추구합니다. 조용한 사색을 즐기며 사물의 본질을 파악하려 노력하는 당신은 풍부하고 깊은 맛을 지닌 쫀득쿠키처럼, 알면 알수록 매력적인 존재입니다.
+-   **Scoring:** A scoring mechanism tallies user choices to determine the final personality type.
+-   **Results Page:** Displays the determined personality type, a detailed description, and a matching image. The result title is personalized with the user's name (e.g., "홍길동님, 당신은 [결과]!"). The logic for this is implemented in `main.js`'s `showResult` function.
+-   **Sharing:** An option to share results via `navigator.share` (for supported browsers) or an alert fallback, generating a shareable text snippet personalized with the user's name and personality result. This is handled by the `shareResult` function in `main.js`.
 
 ### Technical Implementation
--   **HTML:** `index.html` as the main entry point.
--   **CSS:** `style.css` utilizing modern CSS features (Container Queries, Cascade Layers, Logical Properties, CSS Variables) for maintainable and responsive design.
--   **JavaScript:** `main.js` using ES Modules, Async/Await, and modern syntax.
--   **Web Components:** Custom Elements, Shadow DOM, and HTML Templates (`<template>`, `<slot>`) will be used for encapsulating reusable UI components (e.g., question cards, result display).
+-   **HTML (`index.html`):** Main entry point, updated to include a name input field (`id="user-name"`) and a fully dynamic `h2` element (`id="result-title"`) for displaying personalized results.
+-   **CSS (`style.css`):** Utilizes modern CSS features, responsive design, and now includes styling for the new name input field. The `font-family` has been updated to 'Nanum Gothic Coding'.
+-   **JavaScript (`main.js`):** Uses ES Modules, Async/Await, and modern syntax. All questions and personality data are translated. The `startTest` function includes validation for the name input. The `showResult` and `shareResult` functions are modified to incorporate the `userName` for personalized output.
+-   **Web Components (`question-card.js`):** Custom Elements and Shadow DOM are used for encapsulating reusable question cards.
 
 ## 3. Current Plan & To-Do List
 
 ### Goal
-To create the initial structure, design, and logic for the "Dubai Jjonddeok Cookie Personality Test."
+To finalize the "두바이 쫀득쿠키 성격 테스트" implementation with all requested features and aesthetic refinements.
 
 ### Steps
-1.  **[in_progress] Create blueprint.md file with the project overview, design principles, and initial plan.** (This step is currently being executed)
-2.  **[pending] Design the test flow: define personality types, 10 questions, and answer options with scoring logic.**
-3.  **[pending] Implement the basic HTML structure (index.html) for the test, including placeholders for questions, answers, and results.**
-4.  **[pending] Develop the CSS (style.css) to achieve a "pretty and cute" aesthetic, ensuring responsiveness.**
-5.  **[pending] Write JavaScript (main.js) for handling test logic: displaying questions, processing answers, calculating results, and navigating between screens.**
-6.  **[pending] Implement Web Components for reusable UI elements like buttons or question cards.**
-7.  **[pending] Generate placeholder image URLs or descriptions for visual elements.**
-8.  **[pending] Integrate results display with personality descriptions and a share option.**
-9.  **[pending] Refine UI/UX for a polished and interactive experience.**
+1.  **[completed] Translate existing questions and personality results in `main.js` to Korean.**
+2.  **[completed] Update `index.html` to include a name input field on the start screen.**
+3.  **[completed] Modify `main.js` to get the user's name and incorporate it into the results.**
+4.  **[completed] Find suitable cute cookie image URLs for all visual elements (main, personality types, error) or refine descriptions of what images should be.**
+5.  **[completed] Update `index.html` and `main.js` with the chosen image URLs.**
+6.  **[in_progress] Update `blueprint.md` to reflect all these changes.** (This step is currently being executed)

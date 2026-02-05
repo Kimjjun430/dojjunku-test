@@ -21,6 +21,10 @@
             <section id="start-screen" class="screen active">
                 <img src="https://picsum.photos/seed/jjonddeokmain/300/200" alt="두바이 쫀득쿠키 이미지" class="main-image">
                 <p>지금 바로 테스트를 시작하고, 당신의 달콤한 성격을 알아보세요!</p>
+                <div class="input-group">
+                    <label for="user-name">당신의 이름은 무엇인가요?</label>
+                    <input type="text" id="user-name" placeholder="이름을 입력해주세요" maxlength="15">
+                </div>
                 <button id="start-test-btn" class="cute-button">테스트 시작하기</button>
             </section>
 
@@ -35,8 +39,8 @@
             </section>
 
             <section id="result-screen" class="screen">
-                <h2 id="result-title">당신은 <span id="result-personality"></span>!</h2>
-                <img id="result-image" src="https://via.placeholder.com/300x200?text=Your+Jjonddeok+Result" alt="결과 쫀득쿠키 이미지" class="result-image">
+                <h2 id="result-title"></h2>
+                <img id="result-image" src="" alt="결과 쫀득쿠키 이미지" class="result-image">
                 <p id="result-description">여기에 결과에 대한 설명이 표시됩니다.</p>
                 <button id="restart-test-btn" class="cute-button">다시 테스트하기</button>
                 <button id="share-result-btn" class="cute-button">결과 공유하기</button>
