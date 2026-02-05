@@ -1,49 +1,56 @@
-# Project Blueprint: Dubai Jjonddeok Cookie Personality Test
+# Project Blueprint: 두바이 쫀득쿠키 성격 테스트
 
 ## 1. Overview
 
-This project implements a "두바이 쫀득쿠키 성격 테스트" (Dubai Jjonddeok Cookie Personality Test) specifically targeting a **Korean audience**. The test features 10 questions designed to determine a user's personality type, presented with a "pretty and cute" aesthetic. The application is a framework-less web project using HTML, CSS, and modern JavaScript (ES Modules, Web Components) as per Firebase Studio guidelines. It is responsive and visually engaging, incorporating placeholder images that will be eventually replaced with cute cookie icons or suitable generated images to enhance the cute theme. Users can input their name, which will be integrated into the test results.
+This project implements a "두바이 쫀득쿠키 성격 테스트" (Dubai Jjonddeok Cookie Personality Test) specifically targeting a **Korean audience**. The test features 10 questions designed to determine a user's personality type, presented with a "파스텔톤의 귀여운 캐릭터 테스트 웹사이트, 동글동글하고 스티커 같은 일러스트 스타일"의 미학. The application is a framework-less web project using HTML, CSS, and modern JavaScript (ES Modules, Web Components). It is responsive and visually engaging, incorporating user-provided cute character images. Users can input their name, which will be integrated into the test results.
 
 ## 2. Design Principles & Features
 
 ### Aesthetic & UI/UX
--   **Theme:** "Pretty and Cute" inspired by the delicious and visually appealing Dubai Jjonddeok Cookies, tailored for a Korean audience.
--   **Layout:** Clean, balanced, and mobile-responsive layout suitable for various screen sizes.
--   **Colors:** Vibrant and energetic color palette with a wide range of hues, perhaps pastels or bright, cheerful tones.
--   **Typography:** Expressive and relevant fonts, with varied sizes for emphasis (e.g., hero text, question headlines, answer options). Specifically uses 'Nanum Gothic Coding' for a clean and cute Korean-friendly look.
--   **Iconography:** Incorporate cute and intuitive icons where appropriate to enhance understanding and navigation.
--   **Visual Effects:** Subtle animations, multi-layered drop shadows, and gradients to create depth and a premium feel. Interactive elements (buttons, sliders) will have a "glow" effect on hover/focus.
--   **Images:** Currently uses `picsum.photos` seeded URLs as thematic placeholders. These are intended to be replaced with actual cute cookie icons or custom-generated images relevant to the personality types and the overall theme.
+-   **Theme:** "파스텔톤의 귀여운 캐릭터 테스트 웹사이트" - 동글동글하고 스티커 같은 일러스트 스타일.
+-   **Layout:** Clean, balanced, and mobile-responsive layout suitable for various screen sizes, with an emphasis on soft, rounded elements.
+-   **Colors:** Pastel-toned vibrant and energetic color palette.
+-   **Typography:** Expressive and relevant fonts, with varied sizes for emphasis (e.g., hero text, question headlines, answer options). Uses 'Nanum Gothic Coding' for a clean and cute Korean-friendly look.
+-   **Iconography:** Cute and intuitive icons will be used where appropriate.
+-   **Visual Effects:** Subtle animations, multi-layered drop shadows, and gradients to create depth and a lifted "sticker-like" feel. Interactive elements (buttons, inputs) will have soft glow effects on hover/focus.
+-   **Images:** Character images are provided by the user in the `image/` folder.
+    *   `image/쿠키.png`: Main cookie image for the start screen.
+    *   `image/모험가.png`, `image/사색가.png`, `image/예술가.png`, `image/이상주의자.png`, `image/전략가.png`, `image/치유자.png`, `image/현실주의자.png`: Character images for each personality type.
 -   **Interactivity:** Intuitive navigation, clear call-to-action buttons, and smooth transitions between questions and results. Includes a name input field on the start screen.
 
 ### Core Functionality
 -   **Questions and Results in Korean:** All questions, options, and personality descriptions are fully translated into Korean for the target audience.
 -   **Name Input:** Users can enter their name on the start screen, which is then used in the personalized result display and share message.
--   **Question Flow:** Users will progress through 10 multiple-choice questions.
--   **Personality Types:**
-    *   **황금빛 기쁨 (The Golden Delight):** 낙천적이고 쾌활하며 항상 삶의 밝은 면을 봅니다. 당신의 긍정적인 에너지는 주변 사람들에게 행복을 가져다줍니다. 마치 황금빛 쫀득쿠키처럼, 어디서든 빛나고 달콤함을 선사하는 존재입니다!
-    *   **부드러운 마음 (The Soft Heart):** 공감 능력이 뛰어나고 친절하며 온화합니다. 주변 사람들을 지지하고 조화를 중요하게 생각하는 당신의 마음은 부드러운 쫀득쿠키 속살처럼 따뜻하고 포근합니다.
-    *   **매콤한 모험가 (The Spicy Adventurer):** 당신은 대담하고 호기심이 많으며 새로운 경험을 사랑합니다. 에너지가 넘치고 흥미진진한 도전을 즐기는 당신은 예상치 못한 맛으로 가득 찬 매콤한 쫀득쿠키와 같습니다. 늘 새로운 모험을 찾아 떠나죠!
-    *   **깊고 풍부한 사색가 (The Rich & Deep Thinker):** 당신은 내성적이고 사려 깊으며 깊이 있는 것을 추구합니다. 조용한 사색을 즐기며 사물의 본질을 파악하려 노력하는 당신은 풍부하고 깊은 맛을 지닌 쫀득쿠키처럼, 알면 알수록 매력적인 존재입니다.
--   **Scoring:** A scoring mechanism tallies user choices to determine the final personality type.
--   **Results Page:** Displays the determined personality type, a detailed description, and a matching image. The result title is personalized with the user's name (e.g., "홍길동님, 당신은 [결과]!"). The logic for this is implemented in `main.js`'s `showResult` function.
--   **Sharing:** An option to share results via `navigator.share` (for supported browsers) or an alert fallback, generating a shareable text snippet personalized with the user's name and personality result. This is handled by the `shareResult` function in `main.js`.
+-   **Question Flow:** Users will progress through 10 multiple-choice questions, specifically designed to differentiate between the 7 new personality types.
+-   **New Personality Types:** (7 types, Korean descriptions below)
+    *   **모험가 (Adventurer):** `image/모험가.png` - 새로운 것을 찾아 떠나는 것을 두려워하지 않는 당신! 미지의 세계를 탐험하고 도전을 즐기는 진정한 모험가입니다. 당신의 쫀득쿠키는 언제나 예상 밖의 짜릿한 맛으로 가득할 거예요!
+    *   **사색가 (Thinker):** `image/사색가.png` - 깊이 있는 생각과 성찰을 즐기는 당신. 복잡한 문제도 차분하게 분석하고 본질을 꿰뚫어 보는 지혜로운 사색가입니다. 당신의 쫀득쿠키는 한입 베어 물 때마다 깊은 여운을 남길 거예요.
+    *   **예술가 (Artist):** `image/예술가.png` - 평범함 속에서 아름다움을 발견하고 자신만의 색깔로 세상을 표현하는 당신! 자유로운 영혼과 넘치는 창의력으로 삶을 예술 작품처럼 만들어가는 예술가입니다. 당신의 쫀득쿠키는 눈과 입이 즐거운 컬러풀한 매력을 뽐낼 거예요.
+    *   **이상주의자 (Idealist):** `image/이상주의자.png` - 더 나은 세상을 꿈꾸고 선한 영향력을 펼치고자 하는 당신. 따뜻한 마음과 굳건한 신념으로 희망을 심어주는 이상주의자입니다. 당신의 쫀득쿠키는 달콤한 꿈처럼 행복한 에너지를 전해줄 거예요.
+    *   **전략가 (Strategist):** `image/전략가.png` - 목표를 향해 치밀하게 계획하고 실행하는 뛰어난 지략가인 당신! 냉철한 판단력과 탁월한 통찰력으로 어떤 상황에서도 최적의 길을 찾아내는 전략가입니다. 당신의 쫀득쿠키는 완벽한 조화로움을 선사할 거예요.
+    *   **치유자 (Healer):** `image/치유자.png` - 타인의 아픔에 공감하고 위로를 건네는 따뜻한 마음의 소유자. 당신의 존재 자체로 주변을 편안하게 하고 힘을 주는 진정한 치유자입니다. 당신의 쫀득쿠키는 지친 마음을 어루만져 주는 부드러운 위안이 될 거예요.
+    *   **현실주의자 (Realist):** `image/현실주의자.png` - 허황된 꿈보다는 현실을 직시하고 묵묵히 자신의 길을 걸어가는 당신. 안정과 실용성을 중요하게 여기며, 믿음직한 모습으로 주변에 든든한 버팀목이 되어주는 현실주의자입니다. 당신의 쫀득쿠키는 꾸밈없이 담백하고 진실된 맛을 보여줄 거예요.
+-   **Scoring:** A scoring mechanism will tally user choices to determine the final personality type. This logic will be updated to handle 7 personality types.
+-   **Results Page:** Displays the determined personality type, a detailed description, and the corresponding character image. The result title is personalized with the user's name (e.g., "홍길동님, 당신은 [결과]!").
+-   **Sharing:** An option to share results via `navigator.share` (for supported browsers) or an alert fallback, generating a shareable text snippet personalized with the user's name and personality result.
 
 ### Technical Implementation
--   **HTML (`index.html`):** Main entry point, updated to include a name input field (`id="user-name"`) and a fully dynamic `h2` element (`id="result-title"`) for displaying personalized results.
--   **CSS (`style.css`):** Utilizes modern CSS features, responsive design, and now includes styling for the new name input field. The `font-family` has been updated to 'Nanum Gothic Coding'.
--   **JavaScript (`main.js`):** Uses ES Modules, Async/Await, and modern syntax. All questions and personality data are translated. The `startTest` function includes validation for the name input. The `showResult` and `shareResult` functions are modified to incorporate the `userName` for personalized output.
--   **Web Components (`question-card.js`):** Custom Elements and Shadow DOM are used for encapsulating reusable question cards.
+-   **HTML (`index.html`):** Main entry point, updated for image paths, name input, and dynamic result title. The initial main cookie image will be set to `image/쿠키.png`.
+-   **CSS (`style.css`):** Overhauled to implement the new pastel/sticker aesthetic, including updated color palette, more rounded elements, soft shadow effects, and potentially custom font adjustments for a "sticker-like" feel.
+-   **JavaScript (`main.js`):** Updated with new personality types, their descriptions, image paths, and revised question/scoring logic for 7 types. Handles name input, validation, and incorporates name into results/sharing.
+-   **Web Components (`question-card.js`):** Custom Elements for reusable question cards, compatible with the new aesthetic and updated data structure.
 
 ## 3. Current Plan & To-Do List
 
 ### Goal
-To finalize the "두바이 쫀득쿠키 성격 테스트" implementation with all requested features and aesthetic refinements.
+To implement the "두바이 쫀득쿠키 성격 테스트" with 7 new character-based personality types, integrate user-provided images, and apply a pastel, sticker-like aesthetic.
 
 ### Steps
-1.  **[completed] Translate existing questions and personality results in `main.js` to Korean.**
-2.  **[completed] Update `index.html` to include a name input field on the start screen.**
-3.  **[completed] Modify `main.js` to get the user's name and incorporate it into the results.**
-4.  **[completed] Find suitable cute cookie image URLs for all visual elements (main, personality types, error) or refine descriptions of what images should be.**
-5.  **[completed] Update `index.html` and `main.js` with the chosen image URLs.**
-6.  **[in_progress] Update `blueprint.md` to reflect all these changes.** (This step is currently being executed)
+1.  **[completed] Discover the contents of the `image` folder.**
+2.  **[completed] Update `blueprint.md` to detail the new personality types, image integration strategy, revised questions, and the new pastel/sticker aesthetic.**
+3.  **[pending] Redefine 7 personality types, their descriptions, and assign appropriate images from the `image` folder in `main.js`.**
+4.  **[pending] Recreate 10 questions and answer options, with scoring logic tailored to the 7 new personality types, in `main.js`.**
+5.  **[pending] Update `main.js` with the new questions, options, and personality type data.**
+6.  **[pending] Update `index.html` to reflect any structural changes needed for the new image paths and specifically set the main cookie image from the `image` folder.**
+7.  **[pending] Overhaul `style.css` to implement the "pastel-toned, round and sticker-like illustration style" aesthetic.**
+8.  **[pending] Final review and testing of the application.**

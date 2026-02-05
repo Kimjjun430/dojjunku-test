@@ -25,130 +25,174 @@ let userName = '';
 
 let currentQuestionIndex = 0;
 let scores = {
-    'Golden Delight': 0,
-    'Soft Heart': 0,
-    'Spicy Adventurer': 0,
-    'Rich & Deep Thinker': 0
+    '모험가': 0,
+    '사색가': 0,
+    '예술가': 0,
+    '이상주의자': 0,
+    '전략가': 0,
+    '치유자': 0,
+    '현실주의자': 0
 };
 
 // --- Test Data ---
 const questions = [
     {
-        question: "두바이 쫀득쿠키를 처음 맛보려 합니다. 가장 먼저 드는 생각은?",
+        question: "주말에 새로운 활동을 계획한다면, 어떤 종류를 선택할까요?",
         options: [
-            { text: "와, 정말 반짝이고 맛있어 보여! 분명 내 하루를 더 밝게 해줄 거야!", type: 'Golden Delight' },
-            { text: "이 부드러운 간식 안에 어떤 즐거운 식감과 맛이 숨어있을까 궁금해.", type: 'Soft Heart' },
-            { text: "혹시 내가 아직 맛보지 못한 새롭고 독특한 맛일까? 깜짝 놀라게 해주면 좋겠어!", type: 'Spicy Adventurer' },
-            { text: "이 근사한 디저트의 유래와 섬세한 만듦새가 궁금해지는군.", type: 'Rich & Deep Thinker' }
+            { text: "숨겨진 등산로를 찾아 자연을 탐험하거나 새로운 스포츠에 도전한다.", type: '모험가' },
+            { text: "조용한 카페에서 책을 읽거나 복잡한 퍼즐 게임에 몰두한다.", type: '사색가' },
+            { text: "그림을 그리거나 악기를 연주하며 나만의 작품을 만든다.", type: '예술가' },
+            { text: "사회 문제 해결을 위한 자원봉사에 참여하거나 의미 있는 강연을 듣는다.", type: '이상주의자' },
+            { text: "다음 주 업무 계획을 세우거나 개인 재정 계획을 점검한다.", type: '전략가' },
+            { text: "스파나 마사지를 받으며 몸과 마음의 피로를 푼다.", type: '치유자' },
+            { text: "친구들과 만나 맛집을 탐방하거나 영화를 본다.", type: '현실주의자' }
         ]
     },
     {
-        question: "새로운 도전에 맞닥뜨렸을 때, 당신은 주로 어떻게 접근하나요?",
+        question: "팀 프로젝트를 할 때 당신의 역할은 주로 무엇인가요?",
         options: [
-            { text: "모든 것이 잘 풀릴 거라 믿고 열정과 긍정적인 태도로 임해.", type: 'Golden Delight' },
-            { text: "모두의 감정을 고려하고 조화로운 해결책을 찾으려 노력해.", type: 'Soft Heart' },
-            { text: "실험과 위험을 감수할 준비를 하고 앞장서서 뛰어들어.", type: 'Spicy Adventurer' },
-            { text: "움직이기 전에 모든 측면을 신중하게 분석하고 고민해.", type: 'Rich & Deep Thinker' }
+            { text: "새로운 아이디어를 제시하고 팀원들의 참여를 독려한다.", type: '모험가' },
+            { text: "팀의 목표와 방향성을 깊이 고민하고 비판적으로 분석한다.", type: '사색가' },
+            { text: "프로젝트의 미적 요소를 담당하거나 독창적인 방식으로 문제를 해결한다.", type: '예술가' },
+            { text: "팀원들의 의견을 조율하고 긍정적인 분위기를 만들며 이상적인 결과를 추구한다.", type: '이상주의자' },
+            { text: "명확한 계획을 세우고 각자의 역할을 분배하여 효율성을 높인다.", type: '전략가' },
+            { text: "팀원들의 고충을 듣고 공감하며 심리적 지지를 제공한다.", type: '치유자' },
+            { text: "현실적인 제약 조건을 고려하여 실현 가능한 목표를 설정한다.", type: '현실주의자' }
         ]
     },
     {
-        question: "어떤 종류의 모임을 가장 즐기나요?",
+        question: "당신에게 '성공'이란 무엇을 의미하나요?",
         options: [
-            { text: "모두가 웃고 즐거워하는 활기찬 파티.", type: 'Golden Delight' },
-            { text: "친한 친구들과 진솔한 대화를 나누는 아늑한 모임.", type: 'Soft Heart' },
-            { text: "새로운 사람들과 예상치 못한 활동이 가득한 신나는 이벤트.", type: 'Spicy Adventurer' },
-            { text: "흥미로운 주제를 토론하거나 조용히 책을 읽는 저녁.", type: 'Rich & Deep Thinker' }
+            { text: "아무도 가보지 못한 길을 개척하고 새로운 경험을 얻는 것.", type: '모험가' },
+            { text: "삶의 본질적인 질문에 대한 답을 찾고 자신만의 철학을 확립하는 것.", type: '사색가' },
+            { text: "나만의 독창적인 결과물을 만들어 세상에 선보이는 것.", type: '예술가' },
+            { text: "나의 노력으로 세상이 좀 더 나은 곳으로 변화하는 것을 보는 것.", type: '이상주의자' },
+            { text: "세운 목표를 달성하고 그 과정에서 효율성과 성과를 최적화하는 것.", type: '전략가' },
+            { text: "주변 사람들과 함께 행복하고 평화로운 삶을 만들어가는 것.", type: '치유자' },
+            { text: "경제적 안정과 사회적 인정을 얻으며 편안한 삶을 영위하는 것.", type: '현실주의자' }
         ]
     },
     {
-        question: "맛있는 디저트를 먹을 때 가장 행복한 순간은?",
+        question: "여행지에서 예상치 못한 문제가 발생했을 때 당신의 대처 방식은?",
         options: [
-            { text: "입안 가득 퍼지는 즉각적인 행복감과 달콤한 만족감!", type: 'Golden Delight' },
-            { text: "마음을 편안하게 하고 부드러운 여운을 남기는 느낌.", type: 'Soft Heart' },
-            { text: "혀를 자극하는 독특하고 놀라운 맛의 발견!", type: 'Spicy Adventurer' },
-            { text: "한 입 베어 물 때마다 복합적인 맛의 층이 펼쳐지는 순간.", type: 'Rich & Deep Thinker' }
+            { text: "'이것도 추억이지!' 하며 새로운 해결책을 찾거나 우회하는 길을 즐긴다.", type: '모험가' },
+            { text: "잠시 멈춰 서서 문제의 원인을 분석하고 최적의 해결 방안을 고민한다.", type: '사색가' },
+            { text: "이 상황을 영감 삼아 새로운 아이디어를 얻거나 재미있는 방식으로 극복한다.", type: '예술가' },
+            { text: "주변 사람들의 도움을 청하거나 다른 사람들에게 피해가 가지 않도록 노력한다.", type: '이상주의자' },
+            { text: "당황하지 않고 침착하게 여러 대안을 검토하며 가장 효율적인 방법을 선택한다.", type: '전략가' },
+            { text: "동행한 사람들의 불안감을 먼저 살피고, 그들을 안심시키는 데 집중한다.", type: '치유자' },
+            { text: "현실적으로 가능한 선에서 문제를 해결하고, 더 큰 손실을 막는 데 주력한다.", type: '현실주의자' }
         ]
     },
     {
-        question: "예상치 못한 계획 변경에 당신은 어떻게 반응하나요?",
+        question: "당신이 가장 중요하게 생각하는 가치는 무엇인가요?",
         options: [
-            { text: "빠르게 적응하고 새로운 상황의 긍정적인 면을 찾아내.", type: 'Golden Delight' },
-            { text: "관련된 모든 사람이 새로운 방향에 편안함을 느끼도록 신경 써.", type: 'Soft Heart' },
-            { text: "계획되지 않은 모험의 기회로 여기고 즐거워해.", type: 'Spicy Adventurer' },
-            { text: "잠시 멈춰 서서 상황을 재평가하고 다음 단계를 계획해.", type: 'Rich & Deep Thinker' }
+            { text: "자유와 도전", type: '모험가' },
+            { text: "지혜와 통찰", type: '사색가' },
+            { text: "아름다움과 독창성", type: '예술가' },
+            { text: "정의와 평화", type: '이상주의자' },
+            { text: "효율과 성과", type: '전략가' },
+            { text: "공감과 배려", type: '치유자' },
+            { text: "안정과 실용성", type: '현실주의자' }
         ]
     },
     {
-        question: "친구 관계에서 가장 중요하게 생각하는 것은 무엇인가요?",
+        question: "스트레스를 해소하는 당신만의 방법은?",
         options: [
-            { text: "함께 나누는 웃음과 기분 좋은 순간들.", type: 'Golden Delight' },
-            { text: "깊은 이해와 서로를 지지하는 마음.", type: 'Soft Heart' },
-            { text: "새롭고 흥미진진한 경험과 도전을 함께하는 것.", type: 'Spicy Adventurer' },
-            { text: "의미 있는 대화와 지적인 교류.", type: 'Rich & Deep Thinker' }
+            { text: "즉흥적으로 여행을 떠나거나 평소 안 해본 것을 시도한다.", type: '모험가' },
+            { text: "조용한 곳에서 명상을 하거나 깊은 생각에 잠긴다.", type: '사색가' },
+            { text: "좋아하는 음악을 크게 틀고 춤을 추거나 창작 활동에 몰두한다.", type: '예술가' },
+            { text: "고민을 털어놓을 친구를 찾아 이야기하거나 사회 활동에 참여한다.", type: '이상주의자' },
+            { text: "스트레스의 원인을 분석하고 해결을 위한 구체적인 계획을 세운다.", type: '전략가' },
+            { text: "따뜻한 물에 몸을 담그거나 맛있는 음식을 먹으며 스스로를 위로한다.", type: '치유자' },
+            { text: "친한 사람들과 술 한잔 기울이거나 맛있는 것을 먹으며 현실을 잊는다.", type: '현실주의자' }
         ]
     },
     {
-        question: "긴 하루를 보낸 후, 당신의 이상적인 휴식 방법은?",
+        question: "미래를 계획할 때, 당신은 어떤 면을 가장 중요하게 생각하나요?",
         options: [
-            { text: "기분을 좋게 만드는 유쾌하고 가벼운 활동.", type: 'Golden Delight' },
-            { text: "따뜻한 음료와 함께하는 평화롭고 조용한 시간.", type: 'Soft Heart' },
-            { text: "새로운 취미를 시도하거나 새로운 장소를 탐험하는 것.", type: 'Spicy Adventurer' },
-            { text: "오늘의 일들을 되돌아보고 내일을 계획하는 사색의 시간.", type: 'Rich & Deep Thinker' }
+            { text: "새로운 가능성을 열어두고 언제든 변화에 유연하게 대처할 수 있도록 한다.", type: '모험가' },
+            { text: "깊은 통찰을 바탕으로 장기적인 안목으로 계획을 세운다.", type: '사색가' },
+            { text: "틀에 갇히지 않고 나만의 방식으로 독창적인 미래를 그려나간다.", type: '예술가' },
+            { text: "사회에 긍정적인 영향을 미치고 이상적인 가치를 실현할 수 있는 방향으로 계획한다.", type: '이상주의자' },
+            { text: "목표 달성을 위한 가장 효율적이고 실현 가능한 전략을 수립한다.", type: '전략가' },
+            { text: "주변 사람들과 함께 행복을 추구하고, 서로에게 도움이 되는 방향으로 계획한다.", type: '치유자' },
+            { text: "현실적인 제약과 자신의 능력을 고려하여 안정적이고 실용적인 계획을 세운다.", type: '현실주의자' }
         ]
     },
     {
-        question: "만약 당신이 색깔이라면, 어떤 색깔일까요?",
+        question: "당신에게 영감을 주는 것은 무엇인가요?",
         options: [
-            { text: "밝은 노란색 또는 빛나는 주황색.", type: 'Golden Delight' },
-            { text: "부드러운 분홍색 또는 차분한 파란색.", type: 'Soft Heart' },
-            { text: "불타는 빨간색 또는 생기 넘치는 녹색.", type: 'Spicy Adventurer' },
-            { text: "깊은 보라색 또는 차분한 갈색.", type: 'Rich & Deep Thinker' }
+            { text: "미지의 세계, 새로운 경험, 그리고 예측 불가능한 변화.", type: '모험가' },
+            { text: "철학적인 사상, 복잡한 이론, 그리고 인간의 본질에 대한 탐구.", type: '사색가' },
+            { text: "아름다운 예술 작품, 독창적인 디자인, 그리고 창의적인 아이디어.", type: '예술가' },
+            { text: "인류애, 사회 정의, 그리고 더 나은 세상을 위한 희망.", type: '이상주의자' },
+            { text: "성공적인 프로젝트, 효율적인 시스템, 그리고 명확한 목표 달성.", type: '전략가' },
+            { text: "따뜻한 격려의 말, 진심 어린 위로, 그리고 사람들의 행복한 미소.", type: '치유자' },
+            { text: "실제적인 성과, 현실적인 해결책, 그리고 안정적인 일상.", type: '현실주의자' }
         ]
     },
     {
-        question: "어떤 종류의 음악을 선호하나요?",
+        question: "새로운 것을 배울 때, 당신은 어떤 방식을 선호하나요?",
         options: [
-            { text: "경쾌한 팝이나 즐거운 연주곡.", type: 'Golden Delight' },
-            { text: "마음을 차분하게 하는 멜로디나 부드러운 발라드.", type: 'Soft Heart' },
-            { text: "에너지가 넘치는 록 음악이나 모험적인 월드 뮤직.", type: 'Spicy Adventurer' },
-            { text: "생각을 자극하는 클래식 음악이나 감성적인 재즈.", type: 'Rich & Deep Thinker' }
+            { text: "직접 해보고 부딪히면서 몸으로 익힌다.", type: '모험가' },
+            { text: "관련 서적을 탐독하고 깊이 있게 분석하며 이해한다.", type: '사색가' },
+            { text: "나만의 방식으로 재해석하거나 기존 지식을 활용하여 새로운 것을 창조한다.", type: '예술가' },
+            { text: "배운 것을 통해 다른 사람들에게 도움이 될 방법을 모색한다.", type: '이상주의자' },
+            { text: "학습 목표를 명확히 세우고 단계별로 효율적인 학습 전략을 따른다.", type: '전략가' },
+            { text: "편안하고 즐거운 분위기에서 다른 사람들과 소통하며 배운다.", type: '치유자' },
+            { text: "실생활에 바로 적용할 수 있는 실용적인 지식이나 기술을 배운다.", type: '현실주의자' }
         ]
     },
     {
-        question: "인생의 좌우명은 무엇인가요?",
+        question: "당신이 가장 듣고 싶은 칭찬은?",
         options: [
-            { text: "매일이 선물이야!", type: 'Golden Delight' },
-            { text: "친절이 세상을 움직여.", type: 'Soft Heart' },
-            { text: "인생은 모험이야, 최대한 즐겨봐!", type: 'Spicy Adventurer' },
-            { text: "깊이 이해하고, 의미 있게 살자.", type: 'Rich & Deep Thinker' }
+            { text: "역시 당신 덕분에 예상치 못한 즐거운 경험을 했어!", type: '모험가' },
+            { text: "당신과 대화하면 항상 새로운 관점을 얻게 돼.", type: '사색가' },
+            { text: "정말 당신다운, 독창적인 아이디어야!", type: '예술가' },
+            { text: "당신 덕분에 세상이 좀 더 따뜻해졌어.", type: '이상주의자' },
+            { text: "당신의 전략 덕분에 일이 완벽하게 성공했어!", type: '전략가' },
+            { text: "당신이 있어서 정말 위로가 되고 마음이 편안해져.", type: '치유자' },
+            { text: "역시 당신이야, 가장 현실적인 해결책을 제시해 줬어.", type: '현실주의자' }
         ]
     }
 ];
 
 const personalityTypes = {
-    'Golden Delight': {
-        title: '황금빛 기쁨 (The Golden Delight)',
-        description: '당신은 낙천적이고 쾌활하며 항상 삶의 밝은 면을 봅니다. 당신의 긍정적인 에너지는 주변 사람들에게 행복을 가져다줍니다. 마치 황금빛 쫀득쿠키처럼, 어디서든 빛나고 달콤함을 선사하는 존재입니다!',
-        // Placeholder image - replace with actual themed image
-        image: 'https://picsum.photos/seed/goldencookie/300/200'
+    '모험가': {
+        title: '모험가',
+        description: '새로운 것을 찾아 떠나는 것을 두려워하지 않는 당신! 미지의 세계를 탐험하고 도전을 즐기는 진정한 모험가입니다. 당신의 쫀득쿠키는 언제나 예상 밖의 짜릿한 맛으로 가득할 거예요!',
+        image: 'image/모험가.png'
     },
-    'Soft Heart': {
-        title: '부드러운 마음 (The Soft Heart)',
-        description: '당신은 공감 능력이 뛰어나고 친절하며 온화합니다. 주변 사람들을 지지하고 조화를 중요하게 생각하는 당신의 마음은 부드러운 쫀득쿠키 속살처럼 따뜻하고 포근합니다.',
-        // Placeholder image - replace with actual themed image
-        image: 'https://picsum.photos/seed/softdessert/300/200'
+    '사색가': {
+        title: '사색가',
+        description: '깊이 있는 생각과 성찰을 즐기는 당신. 복잡한 문제도 차분하게 분석하고 본질을 꿰뚫어 보는 지혜로운 사색가입니다. 당신의 쫀득쿠키는 한입 베어 물 때마다 깊은 여운을 남길 거예요.',
+        image: 'image/사색가.png'
     },
-    'Spicy Adventurer': {
-        title: '매콤한 모험가 (The Spicy Adventurer)',
-        description: '당신은 대담하고 호기심이 많으며 새로운 경험을 사랑합니다. 에너지가 넘치고 흥미진진한 도전을 즐기는 당신은 예상치 못한 맛으로 가득 찬 매콤한 쫀득쿠키와 같습니다. 늘 새로운 모험을 찾아 떠나죠!',
-        // Placeholder image - replace with actual themed image
-        image: 'https://picsum.photos/seed/spicytreat/300/200'
+    '예술가': {
+        title: '예술가',
+        description: '평범함 속에서 아름다움을 발견하고 자신만의 색깔로 세상을 표현하는 당신! 자유로운 영혼과 넘치는 창의력으로 삶을 예술 작품처럼 만들어가는 예술가입니다. 당신의 쫀득쿠키는 눈과 입이 즐거운 컬러풀한 매력을 뽐낼 거예요.',
+        image: 'image/예술가.png'
     },
-    'Rich & Deep Thinker': {
-        title: '깊고 풍부한 사색가 (The Rich & Deep Thinker)',
-        description: '당신은 내성적이고 사려 깊으며 깊이 있는 것을 추구합니다. 조용한 사색을 즐기며 사물의 본질을 파악하려 노력하는 당신은 풍부하고 깊은 맛을 지닌 쫀득쿠키처럼, 알면 알수록 매력적인 존재입니다.',
-        // Placeholder image - replace with actual themed image
-        image: 'https://picsum.photos/seed/richchocolate/300/200'
+    '이상주의자': {
+        title: '이상주의자',
+        description: '더 나은 세상을 꿈꾸고 선한 영향력을 펼치고자 하는 당신. 따뜻한 마음과 굳건한 신념으로 희망을 심어주는 이상주의자입니다. 당신의 쫀득쿠키는 달콤한 꿈처럼 행복한 에너지를 전해줄 거예요.',
+        image: 'image/이상주의자.png'
+    },
+    '전략가': {
+        title: '전략가',
+        description: '목표를 향해 치밀하게 계획하고 실행하는 뛰어난 지략가인 당신! 냉철한 판단력과 탁월한 통찰력으로 어떤 상황에서도 최적의 길을 찾아내는 전략가입니다. 당신의 쫀득쿠키는 완벽한 조화로움을 선사할 거예요.',
+        image: 'image/전략가.png'
+    },
+    '치유자': {
+        title: '치유자',
+        description: '타인의 아픔에 공감하고 위로를 건네는 따뜻한 마음의 소유자. 당신의 존재 자체로 주변을 편안하게 하고 힘을 주는 진정한 치유자입니다. 당신의 쫀득쿠키는 지친 마음을 어루만져 주는 부드러운 위안이 될 거예요.',
+        image: 'image/치유자.png'
+    },
+    '현실주의자': {
+        title: '현실주의자',
+        description: '허황된 꿈보다는 현실을 직시하고 묵묵히 자신의 길을 걸어가는 당신. 안정과 실용성을 중요하게 여기며, 믿음직한 모습으로 주변에 든든한 버팀목이 되어주는 현실주의자입니다. 당신의 쫀득쿠키는 꾸밈없이 담백하고 진실된 맛을 보여줄 거예요.',
+        image: 'image/현실주의자.png'
     }
 };
 
@@ -173,10 +217,13 @@ function startTest() {
 
     currentQuestionIndex = 0;
     scores = {
-        'Golden Delight': 0,
-        'Soft Heart': 0,
-        'Spicy Adventurer': 0,
-        'Rich & Deep Thinker': 0
+        '모험가': 0,
+        '사색가': 0,
+        '예술가': 0,
+        '이상주의자': 0,
+        '전략가': 0,
+        '치유자': 0,
+        '현실주의자': 0
     };
     showQuestion();
     showScreen(questionScreen);
@@ -231,9 +278,10 @@ function showResult() {
         resultDescription.textContent = result.description;
     } else {
         // Fallback for no result or error
-        resultPersonalitySpan.textContent = '알 수 없음';
-        resultDescription.textContent = '결과를 찾을 수 없습니다. 다시 시도해주세요.';
-        resultImage.src = 'https://picsum.photos/seed/error/300/200';
+        resultTitle.textContent = '결과를 찾을 수 없습니다.';
+        resultDescription.textContent = '테스트를 다시 시도해주세요.';
+        resultImage.src = 'image/쿠키.png'; // Use a default image for error
+        resultImage.alt = '오류 이미지';
     }
 
     showScreen(resultScreen);

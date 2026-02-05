@@ -1,16 +1,16 @@
 /* Reset and base styles */
 :root {
-    --primary-color: #FFB6C1; /* Light Pink */
-    --secondary-color: #FFDAB9; /* Peach */
-    --accent-color: #B0E0E6; /* Powder Blue */
-    --text-color: #333;
-    --light-text-color: #666;
-    --background-color: #FFF0F5; /* Lavender Blush */
+    --primary-color: #FFC0CB; /* Pastel Pink */
+    --secondary-color: #FFECB3; /* Pastel Yellow */
+    --accent-color: #B2EBF2; /* Pastel Cyan */
+    --text-color: #4A4A4A; /* Dark Gray */
+    --light-text-color: #888888; /* Medium Gray */
+    --background-color: #F8F8FF; /* Ghost White */
     --card-background: #FFFFFF;
-    --button-hover: #FFC0CB; /* Pink */
-    --shadow-light: rgba(0, 0, 0, 0.1);
+    --button-hover: #FFD1DC; /* Lighter Pink */
+    --shadow-light: rgba(0, 0, 0, 0.08);
     --shadow-medium: rgba(0, 0, 0, 0.15);
-    --border-radius-soft: 15px;
+    --border-radius-soft: 25px; /* More rounded */
     --spacing-medium: 20px;
     --spacing-large: 30px;
 }
@@ -22,16 +22,17 @@ body {
     color: var(--text-color);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align to top for better content flow */
+    align-items: flex-start;
     min-height: 100vh;
     padding: var(--spacing-medium);
     box-sizing: border-box;
+    line-height: 1.6;
 }
 
 #app-container {
     background-color: var(--card-background);
     border-radius: var(--border-radius-soft);
-    box-shadow: 0 10px 30px var(--shadow-medium);
+    box-shadow: 0 10px 40px var(--shadow-medium); /* More pronounced shadow */
     padding: var(--spacing-large);
     max-width: 600px;
     width: 100%;
@@ -51,14 +52,14 @@ header {
 
 header h1 {
     color: var(--primary-color);
-    font-size: 2.5em;
+    font-size: 2.8em; /* Slightly larger */
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px var(--shadow-light);
+    text-shadow: 3px 3px 8px var(--shadow-light); /* Softer, more prominent shadow */
 }
 
 header p {
     color: var(--light-text-color);
-    font-size: 1.1em;
+    font-size: 1.2em; /* Slightly larger */
 }
 
 /* Main Content Screens */
@@ -80,9 +81,9 @@ header p {
 .main-image, .result-image {
     max-width: 100%;
     height: auto;
-    border-radius: var(--border-radius-soft);
+    border-radius: var(--border-radius-soft); /* More rounded */
     margin-bottom: var(--spacing-medium);
-    box-shadow: 0 5px 15px var(--shadow-light);
+    box-shadow: 0 8px 20px var(--shadow-medium); /* More pronounced shadow */
 }
 
 .input-group {
@@ -93,23 +94,25 @@ header p {
 }
 
 .input-group label {
-    font-size: 1.1em;
+    font-size: 1.2em; /* Slightly larger */
     color: var(--text-color);
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .input-group input[type="text"] {
-    padding: 10px 15px;
-    border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius-soft);
-    font-size: 1em;
+    padding: 12px 18px; /* Slightly more padding */
+    border: 2px solid var(--accent-color); /* Use accent color for border */
+    border-radius: var(--border-radius-soft); /* More rounded */
+    font-size: 1.1em;
     text-align: center;
-    max-width: 250px;
+    max-width: 280px; /* Slightly wider */
     width: 80%;
-    box-shadow: 0 2px 10px var(--shadow-light);
+    box-shadow: 0 4px 12px var(--shadow-light); /* Softer shadow */
     transition: all 0.3s ease;
     outline: none;
+    background-color: var(--background-color); /* Light input background */
+    color: var(--text-color);
 }
 
 .input-group input[type="text"]::placeholder {
@@ -117,8 +120,8 @@ header p {
 }
 
 .input-group input[type="text"]:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 3px 15px var(--shadow-medium);
+    border-color: var(--primary-color); /* Focus with primary color */
+    box-shadow: 0 5px 15px var(--shadow-medium);
 }
 
 /* Buttons */
@@ -126,46 +129,46 @@ header p {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: var(--border-radius-soft);
-    padding: 15px 30px;
-    font-size: 1.2em;
+    border-radius: var(--border-radius-soft); /* More rounded */
+    padding: 18px 35px; /* Larger padding */
+    font-size: 1.3em; /* Larger font */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px var(--shadow-medium);
+    box-shadow: 0 7px 20px var(--shadow-medium); /* More pronounced shadow */
     margin: 10px;
     outline: none;
 }
 
 .cute-button:hover {
     background-color: var(--button-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px var(--shadow-medium);
+    transform: translateY(-5px); /* More lift */
+    box-shadow: 0 10px 25px var(--shadow-medium);
 }
 
 .cute-button:active {
     transform: translateY(0);
-    box-shadow: 0 3px 10px var(--shadow-medium);
+    box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
 /* Question Screen */
 #question-card {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color); /* Pastel Yellow */
     padding: var(--spacing-medium);
-    border-radius: var(--border-radius-soft);
-    box-shadow: 0 8px 25px var(--shadow-medium);
+    border-radius: var(--border-radius-soft); /* More rounded */
+    box-shadow: 0 10px 30px var(--shadow-medium); /* More pronounced shadow */
     margin-bottom: var(--spacing-medium);
 }
 
 #question-card h2 {
-    color: white;
-    font-size: 1.8em;
+    color: var(--text-color); /* Dark Gray for better readability on pastel */
+    font-size: 2em; /* Slightly larger */
     margin-bottom: var(--spacing-medium);
 }
 
 .question-number {
-    font-size: 1.1em;
-    color: white;
+    font-size: 1.2em;
+    color: var(--text-color);
     margin-bottom: 15px;
     opacity: 0.8;
 }
@@ -177,46 +180,43 @@ header p {
 }
 
 .answer-btn {
-    background-color: var(--card-background);
+    background-color: var(--card-background); /* White */
     color: var(--text-color);
     border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius-soft);
+    border-radius: var(--border-radius-soft); /* More rounded */
     padding: 15px;
     font-size: 1.1em;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px var(--shadow-light);
-    text-align: left; /* Align text to left for readability */
+    box-shadow: 0 4px 12px var(--shadow-light); /* Softer shadow */
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .answer-btn:hover {
-    background-color: var(--accent-color);
+    background-color: var(--accent-color); /* Pastel Cyan */
     color: white;
     border-color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow-medium);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px var(--shadow-medium);
 }
 
 .answer-btn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px var(--shadow-light);
+    box-shadow: 0 3px 10px var(--shadow-light);
 }
 
 /* Result Screen */
 #result-title {
     color: var(--primary-color);
-    font-size: 2.2em;
+    font-size: 2.5em;
     margin-bottom: var(--spacing-medium);
 }
 
-#result-personality {
-    color: var(--accent-color);
-    font-weight: bold;
-}
-
 #result-description {
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 1.2em;
+    line-height: 1.7;
     margin-bottom: var(--spacing-large);
 }
 
@@ -224,28 +224,28 @@ header p {
 footer {
     margin-top: var(--spacing-large);
     color: var(--light-text-color);
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     #app-container {
         padding: var(--spacing-medium);
-        border-radius: 10px;
+        border-radius: 20px;
         margin: var(--spacing-medium);
     }
 
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     .cute-button {
-        padding: 12px 25px;
-        font-size: 1em;
+        padding: 15px 30px;
+        font-size: 1.1em;
     }
 
     #question-card h2 {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
 
     .answer-btn {
@@ -254,7 +254,7 @@ footer {
     }
 
     #result-title {
-        font-size: 1.8em;
+        font-size: 2em;
     }
 }
 
@@ -268,33 +268,33 @@ footer {
     }
 
     header h1 {
-        font-size: 1.8em;
+        font-size: 2em;
     }
 
     header p {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .cute-button {
-        padding: 10px 20px;
-        font-size: 0.9em;
+        padding: 12px 25px;
+        font-size: 1em;
         margin: 5px;
     }
 
     #question-card h2 {
-        font-size: 1.3em;
+        font-size: 1.6em;
     }
 
     .answer-btn {
         padding: 10px;
-        font-size: 0.9em;
+        font-size: 0.95em;
     }
 
     #result-title {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
 
     #result-description {
-        font-size: 0.9em;
+        font-size: 1.05em;
     }
 }
